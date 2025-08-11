@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import useManualLanguage from '../components/shared/useManualLanguage';
 import LanguageSelector from '../components/shared/LanguageSelector';
+import { navigateTo } from '../services/NavigationServic';
 
 const Screenshot = ({ title, children }) => (
   <div className="my-6 border bg-slate-100 rounded-xl shadow-md overflow-hidden">
@@ -1029,7 +1030,7 @@ export default function ManualPricing() {
                       <ArrowLeft className="w-4 h-4 ml-2 rotate-180" />
                     </Button>
                   </Link>
-                  <Link to={createPageUrl('PriceManagement')} className="inline-block">
+                  <Link  onClick={()=>navigateTo('priceManagement')} className="inline-block">
                     <Button variant="outline">
                       {t('openDashboard')}
                     </Button>
