@@ -37,18 +37,18 @@ const Screenshot = ({ title, children }) => (
     <div className="bg-slate-200 px-4 py-2 border-b border-slate-300">
       <h5 className="font-semibold text-slate-700">{title}</h5>
     </div>
-    <div className="p-4 md:p-6 bg-white">
+    <div className="p-4 md:p-6 bg-white overflow-x-auto">
       {children}
     </div>
   </div>
 );
 
 const Step = ({ number, title, children }) => (
-  <div className="flex items-start gap-4 mt-8">
+  <div className="flex items-start gap-4 mt-8 w-full">
     <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">{number}</div>
-    <div className="flex-grow">
-      <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-3">{title}</h4>
-      <div className="prose prose-slate max-w-none text-sm sm:text-base">
+    <div className="flex-grow min-w-0">
+      <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-6 sm:mb-3">{title}</h4>
+      <div className="prose prose-slate max-w-none text-sm sm:text-base -ml-12 sm:ml-0">
         {children}
       </div>
     </div>
@@ -502,13 +502,13 @@ export default function ManualOnboarding() {
 
                     <h6 className="font-semibold text-slate-700 mt-6 mb-3">A. Bank Details Form</h6>
                     <Screenshot title="Bank Account Details">
-                      <div className="border border-slate-200 rounded-lg p-4">
+                      <div className="border border-slate-200 rounded-lg p-3 sm:p-4">
                         <h3 className="font-semibold text-slate-700 mb-4 flex items-center gap-2">
                           <Banknote className="w-5 h-5 text-green-600"/>
                           Bank Account Details
                         </h3>
                         <div className="space-y-4">
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div className="grid grid-cols-1 gap-4">
                             <div>
                               <label className="block text-sm font-medium text-slate-700 mb-1">Bank Name *</label>
                               <Input defaultValue="HDFC Bank" className="w-full" />
@@ -518,7 +518,7 @@ export default function ManualOnboarding() {
                               <Input defaultValue="King's Retail Pvt. Ltd." className="w-full" />
                             </div>
                           </div>
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div className="grid grid-cols-1 gap-4">
                             <div>
                               <label className="block text-sm font-medium text-slate-700 mb-1">Account Number *</label>
                               <Input defaultValue="1234567890123456" type="password" className="w-full" />
@@ -532,13 +532,13 @@ export default function ManualOnboarding() {
                           <div>
                             <label className="block text-sm font-medium text-slate-700 mb-2">Cancelled Cheque</label>
                             <div className="border border-slate-200 rounded-lg p-3 bg-green-50">
-                              <div className="flex items-center gap-3">
-                                <FileText className="w-6 h-6 text-green-600" />
-                                <div className="flex-1">
-                                  <p className="text-sm font-medium text-green-800">cancelled_cheque.pdf</p>
+                              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                                <FileText className="w-6 h-6 text-green-600 flex-shrink-0" />
+                                <div className="flex-1 min-w-0">
+                                  <p className="text-sm font-medium text-green-800 truncate">cancelled_cheque.pdf</p>
                                   <p className="text-xs text-green-600">956 KB • Uploaded</p>
                                 </div>
-                                <Badge className="bg-blue-100 text-blue-800">Verified</Badge>
+                                <Badge className="bg-blue-100 text-blue-800 flex-shrink-0">Verified</Badge>
                               </div>
                             </div>
                           </div>
@@ -549,42 +549,42 @@ export default function ManualOnboarding() {
                     <h6 className="font-semibold text-slate-700 mt-6 mb-3">B. Bank Verification Status</h6>
                     <Screenshot title="Bank Account Verification">
                       <div className="space-y-4">
-                        <div className="border border-green-200 bg-green-50 rounded-lg p-4">
+                        <div className="border border-green-200 bg-green-50 rounded-lg p-3 sm:p-4">
                           <div className="flex items-start gap-3">
-                            <CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />
-                            <div>
+                            <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                            <div className="min-w-0 flex-1">
                               <h5 className="font-medium text-green-800">Bank Account Verified</h5>
                               <p className="text-sm text-green-700 mt-1">
                                 Your bank account has been successfully verified. You can now receive payments and make vendor payments through the system.
                               </p>
-                              <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                              <div className="mt-3 grid grid-cols-1 gap-2 text-xs">
                                 <div className="flex items-center gap-2">
-                                  <CheckCircle className="w-3 h-3 text-green-600" />
-                                  <span>Account holder name verified</span>
+                                  <CheckCircle className="w-3 h-3 text-green-600 flex-shrink-0" />
+                                  <span className="break-words">Account holder name verified</span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                  <CheckCircle className="w-3 h-3 text-green-600" />
-                                  <span>IFSC code validated</span>
+                                  <CheckCircle className="w-3 h-3 text-green-600 flex-shrink-0" />
+                                  <span className="break-words">IFSC code validated</span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                  <CheckCircle className="w-3 h-3 text-green-600" />
-                                  <span>Account number format checked</span>
+                                  <CheckCircle className="w-3 h-3 text-green-600 flex-shrink-0" />
+                                  <span className="break-words">Account number format checked</span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                  <CheckCircle className="w-3 h-3 text-green-600" />
-                                  <span>Cancelled cheque reviewed</span>
+                                  <CheckCircle className="w-3 h-3 text-green-600 flex-shrink-0" />
+                                  <span className="break-words">Cancelled cheque reviewed</span>
                                 </div>
                               </div>
                             </div>
                           </div>
                         </div>
                         
-                        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                        <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 sm:p-4">
                           <div className="flex items-start gap-3">
-                            <div className="w-5 h-5 text-blue-600 mt-0.5">🔒</div>
-                            <div>
+                            <div className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0">🔒</div>
+                            <div className="min-w-0 flex-1">
                               <h5 className="font-medium text-blue-800">Security Information</h5>
-                              <p className="text-sm text-blue-700 mt-1">
+                              <p className="text-sm text-blue-700 mt-1 break-words">
                                 All banking information is encrypted using bank-grade security. Your account details are never stored in plain text and are accessible only to authorized personnel for payment processing.
                               </p>
                             </div>
@@ -743,78 +743,117 @@ export default function ManualOnboarding() {
 
                     <h6 className="font-semibold text-slate-700 mt-6 mb-3">D. User Status and Activity Tracking</h6>
                     <Screenshot title="User List with Status Indicators">
-                      <div className="border border-slate-200 rounded-lg overflow-hidden">
-                        <table className="min-w-full">
+                      <div className="border border-slate-200 rounded-lg">
+                        {/* Mobile list view */}
+                        <div className="sm:hidden divide-y divide-slate-200">
+                          <div className="p-4 flex items-start gap-3">
+                            <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                              <span className="text-xs font-medium text-blue-700">RS</span>
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <div className="flex items-center justify-between gap-2">
+                                <p className="text-sm font-medium text-slate-900 truncate">Rajesh Singh</p>
+                                <Badge className="bg-purple-100 text-purple-800 text-[10px]">Store Manager</Badge>
+                              </div>
+                              <p className="text-xs text-slate-500 break-all">rajesh@kingsmarket.com</p>
+                              <div className="mt-2 flex items-center gap-2">
+                                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                                <span className="text-xs text-green-700">Active</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="p-4 flex items-start gap-3">
+                            <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0">
+                              <span className="text-xs font-medium text-emerald-700">PS</span>
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <div className="flex items-center justify-between gap-2">
+                                <p className="text-sm font-medium text-slate-900 truncate">Priya Sharma</p>
+                                <Badge className="bg-blue-100 text-blue-800 text-[10px]">Inventory Manager</Badge>
+                              </div>
+                              <p className="text-xs text-slate-500 break-all">priya@kingsmarket.com</p>
+                              <div className="mt-2 flex items-center gap-2">
+                                <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
+                                <span className="text-xs text-amber-700">Pending Invite</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Desktop table view */}
+                        <div className="w-full overflow-x-auto hidden sm:block">
+                          <table className="w-full table-auto sm:text-sm text-xs">
                           <thead className="bg-slate-50 border-b">
                             <tr>
-                              <th className="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase">User</th>
-                              <th className="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase">Role</th>
-                              <th className="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase">Status</th>
-                              <th className="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase">Last Login</th>
-                              <th className="px-4 py-3 text-right text-xs font-medium text-slate-500 uppercase">Actions</th>
+                              <th className="px-3 py-2 sm:px-4 sm:py-3 text-left text-xs font-medium text-slate-500 uppercase">User</th>
+                              <th className="px-3 py-2 sm:px-4 sm:py-3 text-left text-xs font-medium text-slate-500 uppercase">Role</th>
+                              <th className="px-3 py-2 sm:px-4 sm:py-3 text-left text-xs font-medium text-slate-500 uppercase">Status</th>
+                              <th className="px-3 py-2 sm:px-4 sm:py-3 text-left text-xs font-medium text-slate-500 uppercase hidden sm:table-cell">Last Login</th>
+                              <th className="px-3 py-2 sm:px-4 sm:py-3 text-right text-xs font-medium text-slate-500 uppercase hidden sm:table-cell">Actions</th>
                             </tr>
                           </thead>
                           <tbody className="bg-white divide-y divide-slate-200">
                             <tr>
-                              <td className="px-4 py-4">
+                              <td className="px-3 py-2 sm:px-4 sm:py-4">
                                 <div className="flex items-center gap-3">
                                   <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
                                     <span className="text-xs font-medium text-blue-700">RS</span>
                                   </div>
-                                  <div>
+                                   <div className="min-w-0">
                                     <p className="text-sm font-medium text-slate-900">Rajesh Singh</p>
-                                    <p className="text-xs text-slate-500">rajesh@kingsmarket.com</p>
+                                     <p className="text-xs text-slate-500 break-all">rajesh@kingsmarket.com</p>
                                   </div>
                                 </div>
                               </td>
-                              <td className="px-4 py-4">
-                                <Badge className="bg-purple-100 text-purple-800">Store Manager</Badge>
+                              <td className="px-3 py-2 sm:px-4 sm:py-4">
+                                <Badge className="bg-purple-100 text-purple-800 text-[10px] sm:text-xs">Store Manager</Badge>
                               </td>
-                              <td className="px-4 py-4">
+                              <td className="px-3 py-2 sm:px-4 sm:py-4">
                                 <div className="flex items-center gap-2">
                                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                                   <span className="text-sm text-green-700">Active</span>
                                 </div>
                               </td>
-                              <td className="px-4 py-4">
+                              <td className="px-3 py-2 sm:px-4 sm:py-4 hidden sm:table-cell">
                                 <div className="text-sm text-slate-600">2 hours ago</div>
                                 <div className="text-xs text-slate-500">Today, 10:30 AM</div>
                               </td>
-                              <td className="px-4 py-4 text-right">
+                              <td className="px-3 py-2 sm:px-4 sm:py-4 text-right hidden sm:table-cell">
                                 <Button size="sm" variant="ghost">Edit</Button>
                               </td>
                             </tr>
                             <tr>
-                              <td className="px-4 py-4">
+                              <td className="px-3 py-2 sm:px-4 sm:py-4">
                                 <div className="flex items-center gap-3">
                                   <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center">
                                     <span className="text-xs font-medium text-emerald-700">PS</span>
                                   </div>
-                                  <div>
+                                  <div className="min-w-0">
                                     <p className="text-sm font-medium text-slate-900">Priya Sharma</p>
-                                    <p className="text-xs text-slate-500">priya@kingsmarket.com</p>
+                                    <p className="text-xs text-slate-500 break-all">priya@kingsmarket.com</p>
                                   </div>
                                 </div>
                               </td>
-                              <td className="px-4 py-4">
-                                <Badge className="bg-blue-100 text-blue-800">Inventory Manager</Badge>
+                              <td className="px-3 py-2 sm:px-4 sm:py-4">
+                                <Badge className="bg-blue-100 text-blue-800 text-[10px] sm:text-xs">Inventory Manager</Badge>
                               </td>
-                              <td className="px-4 py-4">
+                              <td className="px-3 py-2 sm:px-4 sm:py-4">
                                 <div className="flex items-center gap-2">
                                   <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
                                   <span className="text-sm text-amber-700">Pending Invite</span>
                                 </div>
                               </td>
-                              <td className="px-4 py-4">
+                              <td className="px-3 py-2 sm:px-4 sm:py-4 hidden sm:table-cell">
                                 <div className="text-sm text-slate-400">Never</div>
                                 <div className="text-xs text-slate-400">Invite sent 2 days ago</div>
                               </td>
-                              <td className="px-4 py-4 text-right">
+                              <td className="px-3 py-2 sm:px-4 sm:py-4 text-right hidden sm:table-cell">
                                 <Button size="sm" variant="outline">Resend Invite</Button>
                               </td>
                             </tr>
                           </tbody>
-                        </table>
+                          </table>
+                        </div>
                       </div>
                     </Screenshot>
                   </Step>

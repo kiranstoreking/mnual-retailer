@@ -25,11 +25,11 @@ const Screenshot = ({ title, children }) => (
 );
 
 const Step = ({ number, title, children }) => (
-  <div className="flex items-start gap-4 mt-8">
+  <div className="flex items-start gap-4 mt-8 w-full">
     <div className="flex-shrink-0 w-8 h-8 bg-stone-600 text-white rounded-full flex items-center justify-center font-bold text-sm">{number}</div>
-    <div className="flex-grow">
-      <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-3">{title}</h4>
-      <div className="prose prose-slate max-w-none text-sm sm:text-base">
+    <div className="flex-grow min-w-0">
+      <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-6 sm:mb-3">{title}</h4>
+      <div className="prose prose-slate max-w-none text-sm sm:text-base break-words -ml-12 sm:ml-0">
         {children}
       </div>
     </div>
@@ -551,7 +551,7 @@ export default function ManualExpenses() {
                 <p>{t('step1Intro')}</p>
                 <Screenshot title={t('expenseDashboard')}>
                   <div className="space-y-6">
-                    <div className="flex justify-between items-start">
+                    <div className="flex justify-between items-start flex-col sm:flex-row gap-3 sm:gap-0">
                       <div>
                         <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
                           <DollarSign className="w-6 h-6 text-stone-600" /> {t('expenseDashboard')}
@@ -565,7 +565,7 @@ export default function ManualExpenses() {
                       <Card><CardHeader><CardTitle className="text-sm font-medium text-slate-500">{t('pendingApproval')}</CardTitle></CardHeader><CardContent><p className="text-2xl font-bold text-yellow-600">3</p></CardContent></Card>
                       <Card><CardHeader><CardTitle className="text-sm font-medium text-slate-500">{t('totalPaid')}</CardTitle></CardHeader><CardContent><p className="text-2xl font-bold text-green-600">₹98,600</p></CardContent></Card>
                     </div>
-                    <div className="border rounded-lg bg-white">
+                    <div className="border rounded-lg bg-white overflow-x-auto ">
                        <div className="flex space-x-1 bg-slate-100 p-1 rounded-t-lg border-b">
                         <button className="px-3 py-1.5 bg-white rounded-md shadow-sm text-sm font-medium flex items-center gap-2"><List className="w-4 h-4"/>{t('overview')}</button>
                         <button className="px-3 py-1.5 text-slate-600 text-sm font-medium flex items-center gap-2"><List className="w-4 h-4"/>{t('categories')}</button>
@@ -573,8 +573,8 @@ export default function ManualExpenses() {
                       </div>
                       <div className="p-4">
                         <h3 className="text-lg font-semibold mb-3">{t('recentExpenses')}</h3>
-                         <div className="overflow-x-auto border rounded-lg">
-                           <table className="min-w-full text-sm">
+                          <div className="w-full  border rounded-lg ">
+                           <table className="w-full  text-sm">
                               <thead className="bg-slate-50"><tr className="border-b"><th className="p-2 text-left">{t('expense')}</th><th className="p-2 text-left">{t('category')}</th><th className="p-2 text-left">{t('date')}</th><th className="p-2 text-right">{t('amount')}</th><th className="p-2 text-center">{t('status')}</th><th className="p-2 text-right">{t('actions')}</th></tr></thead>
                               <tbody>
                                 <tr className="border-b"><td className="p-2">{t('officeSupplies')}</td><td className="p-2">{t('utilities')}</td><td className="p-2">20/07/2024</td><td className="p-2 text-right">₹5,200</td><td className="p-2 text-center"><Badge className="bg-green-100 text-green-800">{t('paid')}</Badge></td><td className="p-2 flex justify-end gap-1"><Button variant="ghost" size="xs"><Eye/></Button></td></tr>
@@ -593,7 +593,7 @@ export default function ManualExpenses() {
               <Step number="2" title={t('step2Title')}>
                 <p>{t('step2Intro')}</p>
                 <Screenshot title={t('addNewExpense')}>
-                   <div className="max-w-xl mx-auto p-6 bg-white border rounded-lg shadow-xl">
+                   <div className="max-w-xl mx-auto p-6 bg-white border rounded-lg shadow-xl ">
                       <h3 className="text-xl font-bold">{t('addNewExpense')}</h3>
                       <p className="text-sm text-slate-500 mt-1">{t('expenseDetails')}</p>
                       <div className="space-y-4 mt-6">

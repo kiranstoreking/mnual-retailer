@@ -27,15 +27,15 @@ const Screenshot = ({ title, children }) => (
 );
 
 const Step = ({ number, title, children }) => (
-  <div className="flex items-start gap-4 mt-8">
-    <div className="flex-shrink-0 w-8 h-8 bg-cyan-600 text-white rounded-full flex items-center justify-center font-bold text-sm">{number}</div>
-    <div className="flex-grow">
-      <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-3">{title}</h4>
-      <div className="prose prose-slate max-w-none text-sm sm:text-base">
-        {children}
-      </div>
+  <div className="flex items-start gap-4 mt-8 w-full">
+  <div className="flex-shrink-0 w-8 h-8 bg-red-600 text-white rounded-full flex items-center justify-center font-bold text-sm">{number}</div>
+  <div className="flex-grow min-w-0">
+  <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-6 sm:mb-3">{title}</h4>
+  <div className="prose prose-slate max-w-none text-sm sm:text-base break-words -ml-12 sm:ml-0">
+      {children}
     </div>
   </div>
+</div>
 );
 
 const translations = {
@@ -850,8 +850,8 @@ export default function ManualVendorManagement() {
                 <Screenshot title={t('vendorDetailScreenshotTitle')}>
                   <div className="max-w-6xl bg-white border rounded-lg shadow-sm">
                     <div className="p-6 border-b">
-                      <div className="flex justify-between items-start">
-                        <div className="flex items-center gap-4">
+                      <div className="flex justify-between items-start flex-col sm:flex-row gap-4 sm:gap-0">
+                        <div className="flex items-center gap-4 flex-col sm:flex-row gap-4 sm:gap-0">
                           <div className="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center">
                             <Building2 className="w-8 h-8 text-green-600" />
                           </div>
@@ -1242,7 +1242,7 @@ export default function ManualVendorManagement() {
                           <div className="space-y-3">
                             <div className="border rounded-lg p-4">
                               <div className="flex justify-between items-center">
-                                <div className="flex items-center gap-3">
+                                <div className="flex items-center gap-3 flex-col sm:flex-row gap-4 sm:gap-0">
                                   <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
                                     <Building2 className="w-5 h-5 text-green-600" />
                                   </div>
@@ -1258,7 +1258,7 @@ export default function ManualVendorManagement() {
                               </div>
                             </div>
                             <div className="border rounded-lg p-4">
-                              <div className="flex justify-between items-center">
+                              <div className="flex justify-between sm:items-center flex-col sm:flex-row gap-4 sm:gap-0">
                                 <div className="flex items-center gap-3">
                                   <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
                                     <Building2 className="w-5 h-5 text-blue-600" />

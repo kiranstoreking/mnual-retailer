@@ -26,11 +26,11 @@ const Screenshot = ({ title, children }) => (
 );
 
 const Step = ({ number, title, children }) => (
-  <div className="flex items-start gap-4 mt-8">
-    <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">{number}</div>
-    <div className="flex-grow">
-      <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-3">{title}</h4>
-      <div className="prose prose-slate max-w-none text-sm sm:text-base">
+  <div className="flex items-start gap-4 mt-8 w-full">
+    <div className="flex-shrink-0 w-8 h-8 bg-red-600 text-white rounded-full flex items-center justify-center font-bold text-sm">{number}</div>
+    <div className="flex-grow min-w-0">
+    <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-6 sm:mb-3">{title}</h4>
+    <div className="prose prose-slate max-w-none text-sm sm:text-base break-words -ml-12 sm:ml-0">
         {children}
       </div>
     </div>
@@ -428,7 +428,8 @@ export default function ManualOrders() {
 
                 <Screenshot title={t('orderDetailView')}>
                   <div className="p-4 bg-white rounded-lg border">
-                    <div className="flex justify-between items-center pb-4 border-b">
+                    <div className="flex justify-between sm:items-center pb-4 border-b flex-col sm:flex-row gap-4 sm:gap-0">
+                      
                       <div>
                         <h3 className="text-lg font-bold text-slate-800">{t('order')} #B2C-5823</h3>
                         <p className="text-sm text-slate-500">May 21, 2024</p>
@@ -559,7 +560,7 @@ export default function ManualOrders() {
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     <div className="lg:col-span-2 bg-white p-4 border rounded-lg">
                       <h3 className="font-bold text-lg mb-4">{t('newSale')}</h3>
-                      <div className="grid grid-cols-2 gap-4">
+                      <div className="grid sm:grid-cols-2 gap-4 ">
                         <div>
                           <label className="text-sm font-medium">{t('customerDetails')}</label>
                           <Input placeholder={t('searchCustomer')} className="mt-1"/>

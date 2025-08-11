@@ -26,11 +26,11 @@ const Screenshot = ({ title, children }) => (
 );
 
 const Step = ({ number, title, children }) => (
-  <div className="flex items-start gap-4 mt-8">
+  <div className="flex items-start gap-4 mt-8 w-full">
     <div className="flex-shrink-0 w-8 h-8 bg-pink-600 text-white rounded-full flex items-center justify-center font-bold text-sm">{number}</div>
-    <div className="flex-grow">
-      <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-3">{title}</h4>
-      <div className="prose prose-slate max-w-none text-sm sm:text-base">
+    <div className="flex-grow min-w-0">
+      <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-6 sm:mb-3">{title}</h4>
+      <div className="prose prose-slate max-w-none text-sm sm:text-base break-words -ml-12 sm:ml-0">
         {children}
       </div>
     </div>
@@ -432,7 +432,7 @@ export default function ManualPricing() {
                         <h2 className="text-xl font-bold text-slate-800">{t('priceManagement')}</h2>
                         <p className="text-sm text-slate-500">{t('monitorPerformance')}</p>
                       </div>
-                      <div className="flex gap-2">
+                      <div className="flex gap-2 flex-col sm:flex-row">
                         <Button className="bg-pink-600 hover:bg-pink-700">
                           <Target className="w-4 h-4 mr-2" />
                           {t('bulkUpdate')}
@@ -653,7 +653,7 @@ export default function ManualPricing() {
                         </div>
                       </div>
                       
-                      <div className="flex justify-end gap-3 mt-6">
+                      <div className="flex justify-end gap-3 mt-6 flex-col sm:flex-row">
                         <Button variant="outline">{t('resetToDefaults')}</Button>
                         <Button className="bg-pink-600 hover:bg-pink-700">{t('savePricing')}</Button>
                       </div>
@@ -909,10 +909,10 @@ export default function ManualPricing() {
 
                 <h6 className="font-semibold text-slate-700 mt-6 mb-3">B. {t('bulkUpdatePreview')}</h6>
                 <Screenshot title={t('bulkUpdatePreview')}>
-                  <div className="bg-slate-50 border border-slate-200 rounded-lg p-4">
-                    <h4 className="font-medium text-slate-700 mb-3">{t('previewAffected', { count: 24 })}</h4>
+                  {/* <div className="bg-slate-50 border border-slate-200 rounded-lg p-4"> */}
+                    {/* <h4 className="font-medium text-slate-700 mb-3">{t('previewAffected', { count: 24 })}</h4> */}
                     <div className="overflow-x-auto">
-                      <table className="min-w-full text-sm">
+                    <table className="min-w-full border border-slate-200 rounded-lg">
                         <thead className="bg-slate-100">
                           <tr>
                             <th className="px-3 py-2 text-left">{t('product')}</th>
@@ -946,11 +946,11 @@ export default function ManualPricing() {
                           </tr>
                         </tbody>
                       </table>
-                    </div>
+                      </div>
                     <div className="mt-3 text-xs text-slate-500">
                       {t('showingOf', { shown: 2, total: 24, value: '2,340' })}
                     </div>
-                  </div>
+                  {/* </div> */}
                 </Screenshot>
 
                 <h6 className="font-semibold text-slate-700 mt-6 mb-3">C. {t('approvalSystem')}</h6>
@@ -959,7 +959,7 @@ export default function ManualPricing() {
                     <h3 className="font-semibold text-slate-700 mb-4">{t('pendingApprovals')}</h3>
                     <div className="space-y-4">
                       <div className="border border-amber-200 bg-amber-50 rounded-lg p-4">
-                        <div className="flex items-start justify-between">
+                        <div className="flex items-start justify-between flex-col sm:flex-row gap-3 sm:gap-0">
                           <div>
                             <h4 className="font-medium text-amber-800">{t('bulkUpdateRequest')}</h4>
                             <p className="text-sm text-amber-700 mt-1">
@@ -990,7 +990,7 @@ export default function ManualPricing() {
                       </div>
 
                       <div className="border border-blue-200 bg-blue-50 rounded-lg p-4">
-                        <div className="flex items-start justify-between">
+                        <div className="flex items-start justify-between flex-col sm:flex-row gap-3 sm:gap-0">
                           <div>
                             <h4 className="font-medium text-blue-800">{t('individualUpdateRequest')}</h4>
                             <p className="text-sm text-blue-700 mt-1">

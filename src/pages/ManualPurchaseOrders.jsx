@@ -26,11 +26,11 @@ const Screenshot = ({ title, children }) => (
 );
 
 const Step = ({ number, title, children }) => (
-  <div className="flex items-start gap-4 mt-8">
-    <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">{number}</div>
-    <div className="flex-grow">
-      <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-3">{title}</h4>
-      <div className="prose prose-slate max-w-none text-sm sm:text-base">
+  <div className="flex items-start gap-4 mt-8 w-full">
+    <div className="flex-shrink-0 w-8 h-8 bg-red-600 text-white rounded-full flex items-center justify-center font-bold text-sm">{number}</div>
+    <div className="flex-grow min-w-0">
+      <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-6 sm:mb-3">{title}</h4>
+      <div className="prose prose-slate max-w-none text-sm sm:text-base break-words -ml-12 sm:ml-0">
         {children}
       </div>
     </div>
@@ -957,7 +957,7 @@ export default function ManualPurchaseOrders() {
                           <h2 className="text-xl font-bold text-slate-900">{t('inventoryDashboard')}</h2>
                           <p className="text-slate-600">{t('manageInv')}</p>
                         </div>
-                        <div className="flex gap-3">
+                        <div className="flex gap-3 flex-col md:flex-row">
                           <Button className="bg-blue-600 hover:bg-blue-700">
                             <Receipt className="w-4 h-4 mr-2" />
                             {t('poButton')}
@@ -1569,7 +1569,7 @@ export default function ManualPurchaseOrders() {
                       <div className="text-sm text-slate-600">
                         <span className="font-medium">{t('numSelected', {count: 3})}</span> • {t('estTotalValue')}: ₹12,450.00
                       </div>
-                      <div className="flex gap-3">
+                      <div className="flex gap-3 ">
                         <Button variant="outline">{t('cancel')}</Button>
                         <Button className="bg-blue-600 hover:bg-blue-700">
                           {t('add_to_basket')}
@@ -1760,7 +1760,7 @@ export default function ManualPurchaseOrders() {
                         <textarea className="w-full p-2 border rounded" placeholder={t('overallNotesPlaceholder')}></textarea>
                        </div>
                     </div>
-                    <div className="p-6 border-t flex justify-end gap-3">
+                    <div className="p-6 border-t flex justify-end gap-3 flex-col md:flex-row">
                       <Button variant="outline">{t('cancel')}</Button>
                       <Button className="bg-emerald-600 hover:bg-emerald-700">
                         <CheckCircle className="w-4 h-4 mr-2" />
@@ -2356,7 +2356,7 @@ export default function ManualPurchaseOrders() {
 
                 <h6 className="font-semibold text-slate-700 mt-6 mb-3">{t('step8A')}</h6>
                 <Screenshot title={t('createPOScreenshotTitle')}>
-                  <div className="flex justify-between items-center p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border">
+                  <div className="flex justify-between flex-col md:flex-row gap-4 md:gap-0 items-center p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border">
                     <div>
                       <h2 className="text-xl font-bold text-slate-900">{t('poPageTitle')}</h2>
                       <p className="text-slate-600">{t('trackOrders')}</p>

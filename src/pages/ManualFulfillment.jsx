@@ -29,11 +29,11 @@ const Screenshot = ({ title, children }) => (
 );
 
 const Step = ({ number, title, children }) => (
-  <div className="flex items-start gap-4 mt-8">
-    <div className="flex-shrink-0 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-sm">{number}</div>
-    <div className="flex-grow">
-      <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-3">{title}</h4>
-      <div className="prose prose-slate max-w-none text-sm sm:text-base">
+  <div className="flex items-start gap-4 mt-8 w-full">
+    <div className="flex-shrink-0 w-8 h-8 bg-red-600 text-white rounded-full flex items-center justify-center font-bold text-sm">{number}</div>
+    <div className="flex-grow min-w-0">
+      <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-6 sm:mb-3">{title}</h4>
+      <div className="prose prose-slate max-w-none text-sm sm:text-base break-words -ml-12 sm:ml-0">
         {children}
       </div>
     </div>
@@ -555,7 +555,7 @@ export default function ManualFulfillment() {
               {t('backToManual')}
             </Button>
           </Link>
-          <LanguageSelector language={language} setLanguage={() => {}} readOnly />
+          <LanguageSelector language={language} setLanguage={() => { }} readOnly />
         </div>
 
         <Card className="shadow-lg">
@@ -578,61 +578,62 @@ export default function ManualFulfillment() {
                 <p>
                   {t('step1Description')}
                 </p>
-
-                <SubStep letter="A" title={`${t('fulfillmentDashboard')} ${t('navigation')}`}>
-                  <Screenshot title={t('fulfillmentDashboard')}>
-                    <div className="border border-slate-200 rounded-lg p-6">
-                      <div className="flex items-center justify-between mb-6">
-                        <h3 className="text-xl font-bold text-slate-800">{t('fulfillmentDashboard')}</h3>
-                        <p className="text-slate-600">{t('manageOrders')}</p>
-                      </div>
-
-                      <div className="bg-slate-50 p-4 rounded-lg mb-6">
-                        <div className="flex items-center gap-4 mb-4">
-                          <Package className="w-5 h-5 text-indigo-600" />
-                          <span className="font-medium">{t('fulfillment')}</span>
+                  <SubStep letter="A" title={`${t('fulfillmentDashboard')} ${t('navigation')}`}>
+                    <Screenshot title={t('fulfillmentDashboard')}>
+                <div className='-ml-4 sm:ml-0'>
+                      <div className="border border-slate-200 rounded-lg p-6">
+                        <div className="flex items-center justify-between mb-6 flex-col sm:flex-row gap-4 sm:gap-0">
+                          <h3 className="text-xl font-bold text-slate-800">{t('fulfillmentDashboard')}</h3>
+                          <p className="text-slate-600">{t('manageOrders')}</p>
                         </div>
-                        <p className="text-sm text-slate-600">{t('clickFulfillment')}</p>
-                      </div>
 
-                      <div className="grid grid-cols-2 gap-4 mb-6">
-                        <Button className="bg-indigo-600 text-white">
-                          <Users className="w-4 h-4 mr-2" />
-                          {t('b2bAndB2cOrders')}
-                        </Button>
-                        <Button variant="outline" className="border-orange-300 text-orange-700">
-                          <Package className="w-4 h-4 mr-2" />
-                          {t('vendorReturns')}
-                        </Button>
-                      </div>
-
-                      <div className="border border-slate-200 bg-slate-50 p-4 rounded-lg mb-6">
-                        <h4 className="font-semibold mb-3 flex items-center gap-2">
-                          <Filter className="w-4 h-4 text-blue-600" />
-                          {t('filterSearchOrders')}
-                        </h4>
-                        <div className="flex gap-3 mb-3">
-                          <div className="flex-1 relative">
-                            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-4 h-4" />
-                            <Input
-                              placeholder={t('searchPlaceholder')}
-                              className="pl-9"
-                            />
+                        <div className="bg-slate-50 p-4 rounded-lg mb-6">
+                          <div className="flex items-center gap-4 mb-4">
+                            <Package className="w-5 h-5 text-indigo-600" />
+                            <span className="font-medium">{t('fulfillment')}</span>
                           </div>
-                          <Button variant="outline">
-                            <Building2 className="w-4 h-4 mr-2" />
-                            {t('b2bOrders')}
+                          <p className="text-sm text-slate-600">{t('clickFulfillment')}</p>
+                        </div>
+
+                        <div className="grid sm:grid-cols-2 gap-4 mb-6 ">
+                          <Button className="bg-indigo-600 text-white">
+                            <Users className="w-4 h-4 mr-2" />
+                            {t('b2bAndB2cOrders')}
+                          </Button>
+                          <Button variant="outline" className="border-orange-300 text-orange-700">
+                            <Package className="w-4 h-4 mr-2" />
+                            {t('vendorReturns')}
                           </Button>
                         </div>
-                        <div className="bg-blue-50 p-3 rounded border border-blue-200">
-                          <p className="text-sm text-blue-800">
-                            {t('showingResults').replace('{count}', '156').replace('{total}', '200')} • {t('b2cOrdersOnly')}
-                          </p>
+
+                        <div className="border border-slate-200 bg-slate-50 p-4 rounded-lg mb-6">
+                          <h4 className="font-semibold mb-3 flex items-center gap-2">
+                            <Filter className="w-4 h-4 text-blue-600" />
+                            {t('filterSearchOrders')}
+                          </h4>
+                          <div className="flex gap-3 mb-3">
+                            <div className="flex-1 relative">
+                              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-4 h-4" />
+                              <Input
+                                placeholder={t('searchPlaceholder')}
+                                className="pl-9"
+                              />
+                            </div>
+                            <Button variant="outline">
+                              <Building2 className="w-4 h-4 mr-2" />
+                              {t('b2bOrders')}
+                            </Button>
+                          </div>
+                          <div className="bg-blue-50 p-3 rounded border border-blue-200">
+                            <p className="text-sm text-blue-800">
+                              {t('showingResults').replace('{count}', '156').replace('{total}', '200')} • {t('b2cOrdersOnly')}
+                            </p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Screenshot>
-                </SubStep>
+                </div>
+                    </Screenshot>
+                  </SubStep>
               </Step>
 
               <Step number="2" title={t('step2Title')}>
@@ -843,9 +844,9 @@ export default function ManualFulfillment() {
                         </div>
                       </div>
 
-                      <div className="flex justify-between items-center pt-4 border-t mt-4">
+                      <div className="flex justify-between items-center pt-4 border-t mt-4 flex-col sm:flex-row gap-4 sm:gap-0">
                         <p className="text-lg font-bold">{t('totalAmount')}: ₹790</p>
-                        <div className="flex gap-3">
+                        <div className="flex sm:gap-3 flex-col sm:flex-row gap-4 ">
                           <Button variant="outline">
                             <Eye className="w-4 h-4 mr-2" />
                             {t('viewFullDetails')}
@@ -872,7 +873,7 @@ export default function ManualFulfillment() {
                 <SubStep letter="A" title={t('generatePickList')}>
                   <Screenshot title={t('pickingInterface')}>
                     <div className="border border-slate-200 rounded-lg p-6">
-                      <div className="flex items-center justify-between mb-6">
+                      <div className="flex sm:items-center justify-between mb-6 flex-col sm:flex-row gap-4 sm:gap-0">
                         <h3 className="text-lg font-bold text-slate-800">{t('generatePickList')} - {t('orderNumber')}ORD-2024-0521-001</h3>
                         <Badge className="bg-orange-100 text-orange-800">{t('picking')}</Badge>
                       </div>
@@ -883,7 +884,7 @@ export default function ManualFulfillment() {
                       </div>
 
                       <div className="space-y-4">
-                        <div className="flex items-center justify-between p-4 bg-white border rounded-lg">
+                        <div className="flex sm:items-center justify-between p-4 bg-white border rounded-lg flex-col sm:flex-row gap-4 sm:gap-2">
                           <div className="flex items-center gap-4">
                             <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">1</div>
                             <div>
@@ -891,7 +892,7 @@ export default function ManualFulfillment() {
                               <p className="text-sm text-slate-600">{t('locationA')}</p>
                             </div>
                           </div>
-                          <div className="flex items-center gap-3">
+                          <div className="flex sm:items-center sm:gap-3 flex-col sm:flex-row gap-4">
                             <span className="text-sm font-medium">{t('quantityToPick')}: 2</span>
                             <Button size="sm" variant="outline">
                               <Scan className="w-4 h-4 mr-2" />
@@ -904,15 +905,15 @@ export default function ManualFulfillment() {
                           </div>
                         </div>
 
-                        <div className="flex items-center justify-between p-4 bg-white border rounded-lg">
-                          <div className="flex items-center gap-4">
+                        <div className="flex sm:items-center justify-between p-4 bg-white border rounded-lg flex-col sm:flex-row gap-4 sm:gap-0">
+                          <div className="flex items-center gap-4 ">
                             <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">2</div>
                             <div>
                               <p className="font-medium">{t('wholeWheatFlour')}</p>
                               <p className="text-sm text-slate-600">{t('locationB')}</p>
                             </div>
                           </div>
-                          <div className="flex items-center gap-3">
+                          <div className="flex sm:items-center gap-3 flex-col sm:flex-row gap-4 sm:gap-0">
                             <span className="text-sm font-medium">{t('quantityToPick')}: 1</span>
                             <Button size="sm" variant="outline">
                               <Scan className="w-4 h-4 mr-2" />
@@ -925,7 +926,7 @@ export default function ManualFulfillment() {
                           </div>
                         </div>
 
-                        <div className="flex items-center justify-between p-4 bg-white border rounded-lg">
+                        <div className="flex sm:items-center justify-between p-4 bg-white border rounded-lg flex-col sm:flex-row gap-4 sm:gap-0" >
                           <div className="flex items-center gap-4">
                             <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">3</div>
                             <div>
@@ -933,7 +934,7 @@ export default function ManualFulfillment() {
                               <p className="text-sm text-slate-600">{t('locationC')}</p>
                             </div>
                           </div>
-                          <div className="flex items-center gap-3">
+                          <div className="flex sm:items-center gap-3 flex-col sm:flex-row gap-4 sm:gap-0">
                             <span className="text-sm font-medium">{t('quantityToPick')}: 1</span>
                             <Button size="sm" variant="outline">
                               <Scan className="w-4 h-4 mr-2" />
@@ -947,7 +948,7 @@ export default function ManualFulfillment() {
                         </div>
                       </div>
 
-                      <div className="flex justify-between items-center pt-6 border-t mt-6">
+                      <div className="flex justify-between items-center pt-6 border-t mt-6 flex-col sm:flex-row gap-4 sm:gap-0">
                         <div className="flex items-center gap-2">
                           <CheckCircle className="w-5 h-5 text-green-600" />
                           <span className="text-green-600 font-medium">{t('pickingComplete')}</span>
@@ -973,7 +974,7 @@ export default function ManualFulfillment() {
                 <SubStep letter="A" title={t('packingStation')}>
                   <Screenshot title={t('packingInterface')}>
                     <div className="border border-slate-200 rounded-lg p-6">
-                      <div className="flex items-center justify-between mb-6">
+                      <div className="flex sm:items-center justify-between mb-6 flex-col sm:flex-row gap-4 sm:gap-0">
                         <h3 className="text-lg font-bold text-slate-800">{t('packingStation')} - {t('orderNumber')}ORD-2024-0521-001</h3>
                         <Badge className="bg-yellow-100 text-yellow-800">{t('packing')}</Badge>
                       </div>
@@ -1021,7 +1022,7 @@ export default function ManualFulfillment() {
                             </Button>
 
                             <div className="border border-slate-200 rounded-lg p-4">
-                              <div className="flex items-center justify-between mb-3">
+                              <div className="flex items-center justify-between mb-3 ">
                                 <h5 className="font-medium">{t('boxId')}: BOX-001</h5>
                                 <Badge variant="outline">3 {t('items')}</Badge>
                               </div>
@@ -1050,8 +1051,8 @@ export default function ManualFulfillment() {
                         </div>
                       </div>
 
-                      <div className="flex justify-between items-center pt-6 border-t mt-6">
-                        <div className="flex gap-3">
+                      <div className="flex justify-between items-center pt-6 border-t mt-6 flex-col sm:flex-row gap-4 sm:gap-0">
+                        <div className="flex gap-3 flex-col sm:flex-row gap-4 sm:gap-0">
                           <Button variant="outline">
                             <FileText className="w-4 h-4 mr-2" />
                             {t('generateInvoice')}
@@ -1080,9 +1081,9 @@ export default function ManualFulfillment() {
                 </p>
 
                 <SubStep letter="A" title={t('dispatchInterface')}>
-                  <Screenshot title={t('shippingCoordination')}>
-                    <div className="border border-slate-200 rounded-lg p-6">
-                      <div className="flex items-center justify-between mb-6">
+                  <Screenshot title={t('shippingCoordination')} >
+                    <div className="border border-slate-200 rounded-lg p-6 ">
+                      <div className="flex sm:items-center justify-between mb-6 flex-col sm:flex-row gap-4 sm:gap-0">
                         <h3 className="text-lg font-bold text-slate-800">{t('readyForDispatch')} - {t('orderNumber')}ORD-2024-0521-001</h3>
                         <Badge className="bg-purple-100 text-purple-800">{t('readyForDispatch')}</Badge>
                       </div>
@@ -1130,7 +1131,7 @@ export default function ManualFulfillment() {
                         <div>
                           <h4 className="font-semibold mb-4">{t('shippingDetails')}</h4>
                           <div className="space-y-4">
-                            <div className="flex items-center gap-3 p-3 bg-slate-50 rounded">
+                            <div className="flex items-center gap-3 p-3 bg-slate-50 rounded flex-col sm:flex-row gap-4 sm:gap-0">
                               <Printer className="w-5 h-5 text-slate-500" />
                               <div>
                                 <p className="font-medium">{t('generateShippingLabel')}</p>
@@ -1139,7 +1140,7 @@ export default function ManualFulfillment() {
                               <Button size="sm" className="ml-auto">{t('generate')}</Button>
                             </div>
 
-                            <div className="flex items-center gap-3 p-3 bg-slate-50 rounded">
+                            <div className="flex items-center gap-3 p-3 bg-slate-50 rounded flex-col sm:flex-row gap-4 sm:gap-0">
                               <FileText className="w-5 h-5 text-slate-500" />
                               <div>
                                 <p className="font-medium">{t('trackingNumber')}</p>

@@ -28,11 +28,11 @@ const Screenshot = ({ title, children }) => (
 );
 
 const Step = ({ number, title, children }) => (
-  <div className="flex items-start gap-4 mt-8">
-    <div className="flex-shrink-0 w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-sm">{number}</div>
-    <div className="flex-grow">
-      <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-3">{title}</h4>
-      <div className="prose prose-slate max-w-none text-sm sm:text-base">
+  <div className="flex items-start gap-4 mt-8 w-full">
+    <div className="flex-shrink-0 w-8 h-8 bg-red-600 text-white rounded-full flex items-center justify-center font-bold text-sm">{number}</div>
+    <div className="flex-grow min-w-0">
+    <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-6 sm:mb-3">{title}</h4>
+    <div className="prose prose-slate max-w-none text-sm sm:text-base break-words -ml-12 sm:ml-0">
         {children}
       </div>
     </div>
@@ -1653,7 +1653,7 @@ export default function ManualNetworkManagement() {
                 <Screenshot title={t('dashboardScreenshotTitle')}>
                   <div className="space-y-6">
                     <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-6 border">
-                      <div className="flex justify-between items-start mb-6">
+                      <div className="flex justify-between items-start mb-6 flex-col sm:flex-row gap-4 sm:gap-0">
                         <div>
                           <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-3">
                             <Network className="w-6 h-6 text-purple-600" />
@@ -1661,7 +1661,7 @@ export default function ManualNetworkManagement() {
                           </h2>
                           <p className="text-slate-600 mt-1">{t('networkDesc')}</p>
                         </div>
-                        <div className="flex gap-3">
+                        <div className="flex gap-3 flex-col sm:flex-row gap-4 sm:gap-0">
                           <Button variant="outline" size="sm">
                             <Star className="w-4 h-4 mr-2" />
                             {t('referralDashboard')}
@@ -1676,7 +1676,7 @@ export default function ManualNetworkManagement() {
                       {/* Network Overview Stats */}
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                         <div className="bg-white rounded-lg p-4 border shadow-sm">
-                          <div className="flex items-center gap-3">
+                          <div className="flex items-center gap-3 flex-col sm:flex-row gap-4 sm:gap-0">
                             <div className="p-2 bg-orange-100 rounded-lg">
                               <Users className="w-5 h-5 text-orange-600" />
                             </div>
@@ -1687,7 +1687,7 @@ export default function ManualNetworkManagement() {
                           </div>
                         </div>
                         <div className="bg-white rounded-lg p-4 border shadow-sm">
-                          <div className="flex items-center gap-3">
+                          <div className="flex items-center gap-3 flex-col sm:flex-row gap-4 sm:gap-0">
                             <div className="p-2 bg-blue-100 rounded-lg">
                               <Building2 className="w-5 h-5 text-blue-600" />
                             </div>
@@ -1698,7 +1698,7 @@ export default function ManualNetworkManagement() {
                           </div>
                         </div>
                         <div className="bg-white rounded-lg p-4 border shadow-sm">
-                          <div className="flex items-center gap-3">
+                          <div className="flex items-center gap-3 flex-col sm:flex-row gap-4 sm:gap-0">
                             <div className="p-2 bg-emerald-100 rounded-lg">
                               <DollarSign className="w-5 h-5 text-emerald-600" />
                             </div>
@@ -1709,7 +1709,7 @@ export default function ManualNetworkManagement() {
                           </div>
                         </div>
                         <div className="bg-white rounded-lg p-4 border shadow-sm">
-                          <div className="flex items-center gap-3">
+                          <div className="flex items-center gap-3 flex-col sm:flex-row gap-4 sm:gap-0">
                             <div className="p-2 bg-purple-100 rounded-lg">
                               <DollarSign className="w-5 h-5 text-purple-600" />
                             </div>
@@ -2131,8 +2131,8 @@ export default function ManualNetworkManagement() {
                             <div key={index} className="border rounded-lg p-4 hover:bg-slate-50 transition-colors">
                               <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
                                 <div className="flex-grow">
-                                  <div className="flex items-center gap-3 mb-3">
-                                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center text-white font-bold">
+                                  <div className="flex items-center gap-3 mb-3 ">
+                                    <div className="hidden sm:blockw-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center text-white font-bold">
                                       <Building2 className="w-6 h-6" />
                                     </div>
                                     <div>
@@ -2376,13 +2376,15 @@ export default function ManualNetworkManagement() {
                                         <p className="text-sm font-medium text-red-800">{t('currentOutstandingBalance')}</p>
                                         <p className="text-2xl font-bold text-red-600">$850.00</p>
                                     </div>
-                                    <table className="w-full text-sm">
+                                    <div className='overflow-x-auto'>
+                                    <table className="w-full text-sm ">
                                         <thead><tr className="border-b"><th className="p-2 text-left font-medium">{t('date')}</th><th className="p-2 text-left font-medium">{t('tableDescription')}</th><th className="p-2 text-right font-medium">{t('debit')}</th><th className="p-2 text-right font-medium">{t('credit')}</th><th className="p-2 text-right font-medium">{t('balance')}</th></tr></thead>
                                         <tbody>
                                             <tr className="border-b"><td className="p-2">May 21, 2024</td><td className="p-2">{t('paymentViaBankTransfer')}</td><td className="p-2 text-right"></td><td className="p-2 text-right text-green-600">$500.00</td><td className="p-2 text-right font-semibold">$850.00</td></tr>
                                             <tr className="border-b"><td className="p-2">May 20, 2024</td><td className="p-2">{t('orderPrefix')}B2B-ORD-00128</td><td className="p-2 text-right text-red-600">$450.00</td><td className="p-2 text-right"></td><td className="p-2 text-right font-semibold">$1,350.00</td></tr>
                                         </tbody>
                                     </table>
+                                    </div>
                                 </div>
                             </div>
                         </Screenshot>

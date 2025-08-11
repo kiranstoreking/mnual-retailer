@@ -70,11 +70,11 @@ const Screenshot = ({ title, children }) => (
 );
 
 const Step = ({ number, title, children }) => (
-  <div className="flex items-start gap-4 mt-8">
-    <div className="flex-shrink-0 w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-sm">{number}</div>
-    <div className="flex-grow">
-      <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-3">{title}</h4>
-      <div className="prose prose-slate max-w-none text-sm sm:text-base">
+  <div className="flex items-start gap-4 mt-8  w-full">
+    <div className="flex-shrink-0 w-8 h-8  bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-sm">{number}</div>
+    <div className="flex-grow min-w-0">
+      <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-6 sm:mb-3">{title}</h4>
+      <div className="prose prose-slate max-w-none text-sm sm:text-base -ml-12 sm:ml-0">
         {children}
       </div>
     </div>
@@ -83,7 +83,7 @@ const Step = ({ number, title, children }) => (
 
 export default function ManualProductContent() {
   const [language] = useManualLanguage();
-  
+
   const t = (key) => {
     return translations[language]?.[key] || translations['en']?.[key] || key;
   };
@@ -98,7 +98,7 @@ export default function ManualProductContent() {
               {t('backToManual')}
             </Button>
           </Link>
-          <LanguageSelector language={language} setLanguage={() => {}} readOnly />
+          <LanguageSelector language={language} setLanguage={() => { }} readOnly />
         </div>
 
         <Card className="shadow-lg">
@@ -129,7 +129,7 @@ export default function ManualProductContent() {
                         <h2 className="text-2xl font-bold text-slate-900">Content Management</h2>
                         <p className="text-slate-600">Manage products, deals, brands, and promotional content</p>
                       </div>
-                      <div className="flex gap-3">
+                      <div className="flex gap-3 flex-col sm:flex-row">
                         <Button variant="outline">
                           <BarChart3 className="w-4 h-4 mr-2" />
                           Analytics
@@ -168,77 +168,80 @@ export default function ManualProductContent() {
               </Step>
 
               <Step number="2" title={t('step2Title')}>
-                <p>
-                  {t('step2Intro')}
-                </p>
-                <p>
-                  {t('step2Description')}
-                </p>
+                <p>{t('step2Intro')}</p>
+                <p>{t('step2Description')}</p>
 
                 <Screenshot title="Product Catalog - Table View">
-                  <div className="space-y-4">
-                    <div className="flex flex-col sm:flex-row gap-4">
-                      <div className="relative flex-1">
-                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-4 h-4" />
-                        <Input placeholder="Search products..." className="pl-9" />
-                      </div>
-                      <Button variant="outline">
-                        <Filter className="w-4 h-4 mr-2" />
-                        Filters
-                      </Button>
-                      <div className="flex gap-2">
-                        <Button variant="outline" size="sm">
-                          <List className="w-4 h-4" />
+                  <div className='overflow-x-auto  [-webkit-overflow-scrolling:touch]'>
+                    <div className="space-y-4">
+                      {/* Filters & Actions */}
+                      <div className="flex flex-col sm:flex-row gap-4">
+                        <div className="relative flex-1">
+                          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-4 h-4" />
+                          <Input placeholder="Search products..." className="pl-9" />
+                        </div>
+                        <Button variant="outline">
+                          <Filter className="w-4 h-4 mr-2" />
+                          Filters
                         </Button>
-                        <Button variant="ghost" size="sm">
-                          <Grid className="w-4 h-4" />
-                        </Button>
+                        <div className="flex gap-2">
+                          <Button variant="outline" size="sm">
+                            <List className="w-4 h-4" />
+                          </Button>
+                          <Button variant="ghost" size="sm">
+                            <Grid className="w-4 h-4" />
+                          </Button>
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="border rounded-lg overflow-hidden">
-                      <table className="w-full">
-                        <thead className="bg-slate-50">
-                          <tr>
-                            <th className="text-left p-3 font-medium">Product</th>
-                            <th className="text-left p-3 font-medium">Brand</th>
-                            <th className="text-left p-3 font-medium">Category</th>
-                            <th className="text-right p-3 font-medium">B2C Price</th>
-                            <th className="text-right p-3 font-medium">Stock</th>
-                            <th className="text-center p-3 font-medium">Status</th>
-                            <th className="text-center p-3 font-medium">Actions</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr className="border-t">
-                            <td className="p-3">
-                              <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 bg-slate-100 rounded"></div>
-                                <div>
-                                  <p className="font-medium">Organic Apples</p>
-                                  <p className="text-sm text-slate-500">SKU: APL-001</p>
-                                </div>
-                              </div>
-                            </td>
-                            <td className="p-3">Fresh Farm</td>
-                            <td className="p-3">Fruits</td>
-                            <td className="p-3 text-right">₹120.00</td>
-                            <td className="p-3 text-right">45</td>
-                            <td className="p-3 text-center">
-                              <Badge variant="secondary" className="bg-green-100 text-green-800">Active</Badge>
-                            </td>
-                            <td className="p-3 text-center">
-                              <Button variant="ghost" size="sm">
-                                <Eye className="w-4 h-4" />
-                              </Button>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
+                      {/* Table wrapper - only this scrolls */}
+                      <div className="border rounded-lg">
+                        <div className="overflow-x-auto sm:overflow-x-visible">
+                          <table className="min-w-[800px] w-full">
+                            <thead className="bg-slate-50">
+                              <tr>
+                                <th className="text-left p-3 font-medium">Product</th>
+                                <th className="text-left p-3 font-medium">Brand</th>
+                                <th className="text-left p-3 font-medium">Category</th>
+                                <th className="text-right p-3 font-medium">B2C Price</th>
+                                <th className="text-right p-3 font-medium">Stock</th>
+                                <th className="text-center p-3 font-medium">Status</th>
+                                <th className="text-center p-3 font-medium">Actions</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr className="border-t">
+                                <td className="p-3">
+                                  <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 bg-slate-100 rounded"></div>
+                                    <div>
+                                      <p className="font-medium">Organic Apples</p>
+                                      <p className="text-sm text-slate-500">SKU: APL-001</p>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td className="p-3">Fresh Farm</td>
+                                <td className="p-3">Fruits</td>
+                                <td className="p-3 text-right">₹120.00</td>
+                                <td className="p-3 text-right">45</td>
+                                <td className="p-3 text-center">
+                                  <Badge variant="secondary" className="bg-green-100 text-green-800">Active</Badge>
+                                </td>
+                                <td className="p-3 text-center">
+                                  <Button variant="ghost" size="sm">
+                                    <Eye className="w-4 h-4" />
+                                  </Button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </Screenshot>
               </Step>
+
 
               <Step number="3" title={t('step3Title')}>
                 <p>
@@ -374,7 +377,7 @@ export default function ManualProductContent() {
 
                     <div className="space-y-3">
                       <div className="border rounded-lg p-4">
-                        <div className="flex justify-between items-start">
+                        <div className="flex flex-col sm:flex-row gap-3 sm:gap-0 justify-between items-start">
                           <div>
                             <h4 className="font-semibold">Premium Honey</h4>
                             <p className="text-sm text-slate-500">Submitted by: Golden Harvest Foods</p>

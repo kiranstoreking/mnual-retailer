@@ -3,8 +3,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
-import { 
-  ArrowLeft, Users, Package, Receipt, FileText, Warehouse, 
+import {
+  ArrowLeft, Users, Package, Receipt, FileText, Warehouse,
   DollarSign, BarChart3, Building2, Truck, Eye, Search,
   Filter, Calendar, CheckCircle, Clock, ArrowUpDown,
   AlertTriangle, Edit, Plus, Grid, List, Camera, Box,
@@ -27,11 +27,11 @@ const Screenshot = ({ title, children }) => (
 );
 
 const Step = ({ number, title, children }) => (
-  <div className="flex items-start gap-4 mt-8">
+  <div className="flex items-start gap-4 mt-8 w-full ">
     <div className="flex-shrink-0 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-sm">{number}</div>
-    <div className="flex-grow">
-      <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-3">{title}</h4>
-      <div className="prose prose-slate max-w-none text-sm sm:text-base">
+    <div className="flex-grow min-w-0">
+      <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-6 sm:mb-3">{title}</h4>
+      <div className="prose prose-slate max-w-none text-sm sm:text-base break-words -ml-12 sm:ml-0">
         {children}
       </div>
     </div>
@@ -606,7 +606,7 @@ const translations = {
 
 export default function ManualVendorPortal() {
   const [language, setLanguage] = useManualLanguage();
-  
+
   const t = (key, params) => {
     let text = translations[language]?.[key] || translations['en']?.[key] || key;
     if (params) {
@@ -627,7 +627,7 @@ export default function ManualVendorPortal() {
               {t('backToManual')}
             </Button>
           </Link>
-          <LanguageSelector language={language} setLanguage={setLanguage} />
+          <LanguageSelector language={language} setLanguage={setLanguage} readOnly={true}  />
         </div>
 
         <Card className="shadow-lg">
@@ -663,7 +663,7 @@ export default function ManualVendorPortal() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                       <div className="bg-white border rounded-lg p-4 text-center">
                         <div className="text-2xl font-bold text-blue-600">24</div>
@@ -682,7 +682,7 @@ export default function ManualVendorPortal() {
                         <div className="text-sm text-slate-600">{t('myProducts')}</div>
                       </div>
                     </div>
-                    
+
                     <p className="text-sm text-slate-600">{t('metricsOverview')}</p>
                   </div>
                 </Screenshot>
@@ -744,196 +744,203 @@ export default function ManualVendorPortal() {
 
                 <h6 className="font-semibold text-slate-700 mt-6 mb-3">{t('step2A')}</h6>
                 <Screenshot title={t('poListScreenshotTitle')}>
-                  <div className="space-y-4">
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                      <div>
-                        <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
-                          {t('myPOs')} (12)
-                          <Badge className="bg-blue-50 text-blue-700 border-blue-200">{t('fromSupermarket')}</Badge>
-                        </h2>
-                        <p className="text-sm text-slate-600 mt-1">{t('fromLocation')}</p>
-                      </div>
-                      <div className="flex gap-2">
-                        <div className="relative">
-                          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                          <Input placeholder={t('searchPO')} className="pl-9 w-48" />
+                  <div className="w-full overflow-x-auto [-webkit-overflow-scrolling:touch]">
+                    <div className="space-y-4">
+                      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div>
+                          <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
+                            {t('myPOs')} (12)
+                            <Badge className="bg-blue-50 text-blue-700 border-blue-200">{t('fromSupermarket')}</Badge>
+                          </h2>
+                          <p className="text-sm text-slate-600 mt-1">{t('fromLocation')}</p>
                         </div>
-                        <select className="px-3 py-2 border border-slate-300 rounded-md text-sm">
-                          <option>{t('allStatuses')}</option>
-                          <option>{t('placed')}</option>
-                          <option>{t('accepted')}</option>
-                          <option>{t('shipped')}</option>
-                        </select>
-                        <div className="flex gap-1">
-                          <Button size="sm" variant="default"><List className="w-4 h-4" /></Button>
-                          <Button size="sm" variant="outline"><Grid className="w-4 h-4" /></Button>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="border rounded-lg overflow-hidden">
-                      <table className="min-w-full">
-                        <thead className="bg-slate-50 border-b">
-                          <tr>
-                            <th className="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase">
-                              <div className="flex items-center gap-1">
-                                {t('poId')}
-                                <ArrowUpDown className="w-3 h-3" />
-                              </div>
-                            </th>
-                            <th className="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase">
-                              <div className="flex items-center gap-1">
-                                {t('orderDate')}
-                                <ArrowUpDown className="w-3 h-3" />
-                              </div>
-                            </th>
-                            <th className="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase">{t('items')}</th>
-                            <th className="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase">
-                              <div className="flex items-center gap-1">
-                                {t('totalValue')}
-                                <ArrowUpDown className="w-3 h-3" />
-                              </div>
-                            </th>
-                            <th className="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase">{t('status')}</th>
-                            <th className="px-4 py-3 text-right text-xs font-medium text-slate-500 uppercase">{t('actions')}</th>
-                          </tr>
-                        </thead>
-                        <tbody className="bg-white divide-y divide-slate-200">
-                          <tr className="hover:bg-slate-50">
-                            <td className="px-4 py-4 font-mono text-sm">PO-2024-0521-003</td>
-                            <td className="px-4 py-4 text-sm">May 21, 2024</td>
-                            <td className="px-4 py-4 text-sm">5</td>
-                            <td className="px-4 py-4 font-semibold text-sm">₹12,450.00</td>
-                            <td className="px-4 py-4">
-                              <Badge className="bg-yellow-100 text-yellow-800 flex items-center gap-1 w-fit">
-                                <Clock className="w-3 h-3" />
-                                {t('placed')}
-                              </Badge>
-                            </td>
-                            <td className="px-4 py-4 text-right space-x-2">
-                              <Button size="sm" variant="outline">
-                                <Eye className="w-4 h-4 mr-1" />
-                                {t('view')}
-                              </Button>
-                              <Button size="sm" variant="outline">
-                                <Edit className="w-4 h-4 mr-1" />
-                                {t('modify')}
-                              </Button>
-                            </td>
-                          </tr>
-                          <tr className="hover:bg-slate-50">
-                            <td className="px-4 py-4 font-mono text-sm">PO-2024-0520-001</td>
-                            <td className="px-4 py-4 text-sm">May 20, 2024</td>
-                            <td className="px-4 py-4 text-sm">3</td>
-                            <td className="px-4 py-4 font-semibold text-sm">₹8,750.00</td>
-                            <td className="px-4 py-4">
-                              <Badge className="bg-green-100 text-green-800 flex items-center gap-1 w-fit">
-                                <CheckCircle className="w-3 h-3" />
-                                {t('accepted')}
-                              </Badge>
-                            </td>
-                            <td className="px-4 py-4 text-right space-x-2">
-                              <Button size="sm" variant="outline">
-                                <Eye className="w-4 h-4 mr-1" />
-                                {t('view')}
-                              </Button>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                    <p className="text-sm text-slate-600">{t('poTableDesc')}</p>
-                  </div>
-                </Screenshot>
-
-                <h6 className="font-semibold text-slate-700 mt-6 mb-3">{t('step2B')}</h6>
-                <Screenshot title={t('orderDetailScreenshotTitle')}>
-                  <div className="max-w-4xl border rounded-lg overflow-hidden">
-                    <div className="bg-slate-50 px-6 py-4 border-b">
-                      <h3 className="text-lg font-bold text-slate-800 flex items-center gap-2">
-                        {t('poDetailTitle')}
-                        <Badge className="bg-blue-50 text-blue-700 border-blue-200">{t('fromSupermarket')}</Badge>
-                      </h3>
-                    </div>
-                    <div className="p-6 space-y-6">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="border rounded-lg p-4">
-                          <h4 className="font-medium text-slate-800 mb-3">{t('orderSummary')}</h4>
-                          <div className="grid grid-cols-2 gap-4 text-sm">
-                            <div><p className="text-slate-500">{t('orderDate')}</p><p className="font-medium">May 21, 2024</p></div>
-                            <div><p className="text-slate-500">{t('expectedDelivery')}</p><p className="font-medium">May 25, 2024</p></div>
-                            <div><p className="text-slate-500">{t('totalValue')}</p><p className="font-bold text-lg">₹12,450.00</p></div>
-                            <div><p className="text-slate-500">{t('status')}</p><Badge className="bg-yellow-100 text-yellow-800">{t('placed')}</Badge></div>
+                        <div className="flex gap-2">
+                          <div className="relative">
+                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                            <Input placeholder={t('searchPO')} className="pl-9 w-48" />
                           </div>
-                        </div>
-                        <div className="border rounded-lg p-4">
-                          <h4 className="font-medium text-slate-800 mb-3">{t('supermarketDetails')}</h4>
-                          <div className="space-y-3 text-sm">
-                            <div>
-                              <p className="text-slate-500">{t('storeName')}</p>
-                              <p className="font-medium">RetailOS Supermarket</p>
-                            </div>
-                            <div>
-                              <p className="text-slate-500">{t('address')}</p>
-                              <p className="font-medium">123 Commerce Street, Mumbai</p>
-                              <p className="text-slate-500">Maharashtra 400001</p>
-                            </div>
-                            <div>
-                              <p className="text-slate-500">{t('contact')}</p>
-                              <p className="font-medium">+91 98765 43210</p>
-                              <p className="text-slate-500">orders@retailos.com</p>
-                            </div>
+                          <select className="px-3 py-2 border border-slate-300 rounded-md text-sm">
+                            <option>{t('allStatuses')}</option>
+                            <option>{t('placed')}</option>
+                            <option>{t('accepted')}</option>
+                            <option>{t('shipped')}</option>
+                          </select>
+                          <div className="flex gap-1">
+                            <Button size="sm" variant="default"><List className="w-4 h-4" /></Button>
+                            <Button size="sm" variant="outline"><Grid className="w-4 h-4" /></Button>
                           </div>
                         </div>
                       </div>
 
-                      <div className="border rounded-lg">
-                        <div className="bg-slate-50 px-4 py-3 border-b">
-                          <h4 className="font-medium text-slate-800">{t('itemsCount', {count: 5})}</h4>
-                        </div>
-                        <div className="overflow-x-auto">
-                          <table className="min-w-full">
+                      <div className="border rounded-lg overflow-hidden">
+                        <div className="w-full overflow-x-auto [-webkit-overflow-scrolling:touch]">
+                          <table className="w-full">
                             <thead className="bg-slate-50 border-b">
                               <tr>
-                                <th className="px-4 py-2 text-left text-xs font-medium text-slate-500">{t('product')}</th>
-                                <th className="px-4 py-2 text-center text-xs font-medium text-slate-500">{t('qty')}</th>
-                                <th className="px-4 py-2 text-right text-xs font-medium text-slate-500">{t('unitCost')}</th>
-                                <th className="px-4 py-2 text-right text-xs font-medium text-slate-500">{t('total')}</th>
+                                <th className="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase">
+                                  <div className="flex items-center gap-1">
+                                    {t('poId')}
+                                    <ArrowUpDown className="w-3 h-3" />
+                                  </div>
+                                </th>
+                                <th className="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase">
+                                  <div className="flex items-center gap-1">
+                                    {t('orderDate')}
+                                    <ArrowUpDown className="w-3 h-3" />
+                                  </div>
+                                </th>
+                                <th className="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase">{t('items')}</th>
+                                <th className="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase">
+                                  <div className="flex items-center gap-1">
+                                    {t('totalValue')}
+                                    <ArrowUpDown className="w-3 h-3" />
+                                  </div>
+                                </th>
+                                <th className="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase">{t('status')}</th>
+                                <th className="px-4 py-3 text-right text-xs font-medium text-slate-500 uppercase">{t('actions')}</th>
                               </tr>
                             </thead>
-                            <tbody className="divide-y divide-slate-200">
-                              <tr>
-                                <td className="px-4 py-3 text-sm">{t('organicRice')}</td>
-                                <td className="px-4 py-3 text-center text-sm">20</td>
-                                <td className="px-4 py-3 text-right text-sm">₹85.00</td>
-                                <td className="px-4 py-3 text-right font-medium text-sm">₹1,700.00</td>
+                            <tbody className="bg-white divide-y divide-slate-200">
+                              <tr className="hover:bg-slate-50">
+                                <td className="px-4 py-4 font-mono text-sm">PO-2024-0521-003</td>
+                                <td className="px-4 py-4 text-sm">May 21, 2024</td>
+                                <td className="px-4 py-4 text-sm">5</td>
+                                <td className="px-4 py-4 font-semibold text-sm">₹12,450.00</td>
+                                <td className="px-4 py-4">
+                                  <Badge className="bg-yellow-100 text-yellow-800 flex items-center gap-1 w-fit">
+                                    <Clock className="w-3 h-3" />
+                                    {t('placed')}
+                                  </Badge>
+                                </td>
+                                <td className="px-4 py-4 text-right space-x-2">
+                                  <Button size="sm" variant="outline">
+                                    <Eye className="w-4 h-4 mr-1" />
+                                    {t('view')}
+                                  </Button>
+                                  <Button size="sm" variant="outline">
+                                    <Edit className="w-4 h-4 mr-1" />
+                                    {t('modify')}
+                                  </Button>
+                                </td>
                               </tr>
-                              <tr>
-                                <td className="px-4 py-3 text-sm">{t('freshMilk')}</td>
-                                <td className="px-4 py-3 text-center text-sm">50</td>
-                                <td className="px-4 py-3 text-right text-sm">₹45.00</td>
-                                <td className="px-4 py-3 text-right font-medium text-sm">₹2,250.00</td>
-                              </tr>
-                              <tr>
-                                <td className="px-4 py-3 text-sm">{t('organicEggs')}</td>
-                                <td className="px-4 py-3 text-center text-sm">30</td>
-                                <td className="px-4 py-3 text-right text-sm">₹120.00</td>
-                                <td className="px-4 py-3 text-right font-medium text-sm">₹3,600.00</td>
+                              <tr className="hover:bg-slate-50">
+                                <td className="px-4 py-4 font-mono text-sm">PO-2024-0520-001</td>
+                                <td className="px-4 py-4 text-sm">May 20, 2024</td>
+                                <td className="px-4 py-4 text-sm">3</td>
+                                <td className="px-4 py-4 font-semibold text-sm">₹8,750.00</td>
+                                <td className="px-4 py-4">
+                                  <Badge className="bg-green-100 text-green-800 flex items-center gap-1 w-fit">
+                                    <CheckCircle className="w-3 h-3" />
+                                    {t('accepted')}
+                                  </Badge>
+                                </td>
+                                <td className="px-4 py-4 text-right space-x-2">
+                                  <Button size="sm" variant="outline">
+                                    <Eye className="w-4 h-4 mr-1" />
+                                    {t('view')}
+                                  </Button>
+                                </td>
                               </tr>
                             </tbody>
                           </table>
                         </div>
                       </div>
+                      <p className="text-sm text-slate-600">{t('poTableDesc')}</p>
+                    </div>
+                  </div>
+                </Screenshot>
 
-                      <div className="flex gap-3 justify-end">
-                        <Button variant="outline">
-                          <Edit className="w-4 h-4 mr-2" />
-                          {t('reqMod')}
-                        </Button>
-                        <Button className="bg-green-600 hover:bg-green-700">
-                          <CheckCircle className="w-4 h-4 mr-2" />
-                          {t('acceptOrder')}
-                        </Button>
+                <h6 className="font-semibold text-slate-700 mt-6 mb-3">{t('step2B')}</h6>
+                <Screenshot title={t('orderDetailScreenshotTitle')}>
+                  <div className="w-full overflow-x-auto [-webkit-overflow-scrolling:touch]">
+
+                    <div className="max-w-4xl border rounded-lg overflow-hidden">
+                      <div className="bg-slate-50 px-6 py-4 border-b">
+                        <h3 className="text-lg font-bold text-slate-800 flex items-center gap-2">
+                          {t('poDetailTitle')}
+                          <Badge className="bg-blue-50 text-blue-700 border-blue-200">{t('fromSupermarket')}</Badge>
+                        </h3>
+                      </div>
+                      <div className="p-6 space-y-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <div className="border rounded-lg p-4">
+                            <h4 className="font-medium text-slate-800 mb-3">{t('orderSummary')}</h4>
+                            <div className="grid grid-cols-2 gap-4 text-sm">
+                              <div><p className="text-slate-500">{t('orderDate')}</p><p className="font-medium">May 21, 2024</p></div>
+                              <div><p className="text-slate-500">{t('expectedDelivery')}</p><p className="font-medium">May 25, 2024</p></div>
+                              <div><p className="text-slate-500">{t('totalValue')}</p><p className="font-bold text-lg">₹12,450.00</p></div>
+                              <div><p className="text-slate-500">{t('status')}</p><Badge className="bg-yellow-100 text-yellow-800">{t('placed')}</Badge></div>
+                            </div>
+                          </div>
+                          <div className="border rounded-lg p-4">
+                            <h4 className="font-medium text-slate-800 mb-3">{t('supermarketDetails')}</h4>
+                            <div className="space-y-3 text-sm">
+                              <div>
+                                <p className="text-slate-500">{t('storeName')}</p>
+                                <p className="font-medium">RetailOS Supermarket</p>
+                              </div>
+                              <div>
+                                <p className="text-slate-500">{t('address')}</p>
+                                <p className="font-medium">123 Commerce Street, Mumbai</p>
+                                <p className="text-slate-500">Maharashtra 400001</p>
+                              </div>
+                              <div>
+                                <p className="text-slate-500">{t('contact')}</p>
+                                <p className="font-medium">+91 98765 43210</p>
+                                <p className="text-slate-500">orders@retailos.com</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="border rounded-lg">
+                          <div className="bg-slate-50 px-4 py-3 border-b">
+                            <h4 className="font-medium text-slate-800">{t('itemsCount', { count: 5 })}</h4>
+                          </div>
+                          <div className="w-full overflow-x-auto [-webkit-overflow-scrolling:touch]">
+                            <table className="min-w-[700px]">
+                              <thead className="bg-slate-50 border-b">
+                                <tr>
+                                  <th className="px-4 py-2 text-left text-xs font-medium text-slate-500">{t('product')}</th>
+                                  <th className="px-4 py-2 text-center text-xs font-medium text-slate-500">{t('qty')}</th>
+                                  <th className="px-4 py-2 text-right text-xs font-medium text-slate-500">{t('unitCost')}</th>
+                                  <th className="px-4 py-2 text-right text-xs font-medium text-slate-500">{t('total')}</th>
+                                </tr>
+                              </thead>
+                              <tbody className="divide-y divide-slate-200">
+                                <tr>
+                                  <td className="px-4 py-3 text-sm">{t('organicRice')}</td>
+                                  <td className="px-4 py-3 text-center text-sm">20</td>
+                                  <td className="px-4 py-3 text-right text-sm">₹85.00</td>
+                                  <td className="px-4 py-3 text-right font-medium text-sm">₹1,700.00</td>
+                                </tr>
+                                <tr>
+                                  <td className="px-4 py-3 text-sm">{t('freshMilk')}</td>
+                                  <td className="px-4 py-3 text-center text-sm">50</td>
+                                  <td className="px-4 py-3 text-right text-sm">₹45.00</td>
+                                  <td className="px-4 py-3 text-right font-medium text-sm">₹2,250.00</td>
+                                </tr>
+                                <tr>
+                                  <td className="px-4 py-3 text-sm">{t('organicEggs')}</td>
+                                  <td className="px-4 py-3 text-center text-sm">30</td>
+                                  <td className="px-4 py-3 text-right text-sm">₹120.00</td>
+                                  <td className="px-4 py-3 text-right font-medium text-sm">₹3,600.00</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+
+                        <div className="flex gap-3 justify-end flex-col sm:flex-row gap-4 sm:gap-0">
+                          <Button variant="outline">
+                            <Edit className="w-4 h-4 mr-2" />
+                            {t('reqMod')}
+                          </Button>
+                          <Button className="bg-green-600 hover:bg-green-700">
+                            <CheckCircle className="w-4 h-4 mr-2" />
+                            {t('acceptOrder')}
+                          </Button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -947,8 +954,8 @@ export default function ManualVendorPortal() {
                       <h3 className="text-lg font-bold text-slate-800">{t('reqModTitle')}</h3>
                     </div>
                     <div className="p-6 space-y-4">
-                      <div className="overflow-x-auto">
-                        <table className="min-w-full border rounded-lg">
+                      <div className="w-full overflow-x-auto [-webkit-overflow-scrolling:touch]">
+                        <table className="min-w-[760px] border rounded-lg">
                           <thead className="bg-slate-50 border-b">
                             <tr>
                               <th className="px-4 py-3 text-left text-xs font-medium text-slate-500">{t('product')}</th>
@@ -987,12 +994,12 @@ export default function ManualVendorPortal() {
                           </tbody>
                         </table>
                       </div>
-                      
+
                       <div className="space-y-2">
                         <label className="block text-sm font-medium text-slate-700">{t('reasonForMod')}</label>
-                        <textarea 
-                          className="w-full p-3 border border-slate-300 rounded-md text-sm" 
-                          rows="3" 
+                        <textarea
+                          className="w-full p-3 border border-slate-300 rounded-md text-sm"
+                          rows="3"
                           placeholder={t('reasonPlaceholder')}
                         >{t('reasonExample')}</textarea>
                       </div>
@@ -1012,156 +1019,156 @@ export default function ManualVendorPortal() {
                   {t('step3Intro')}
                 </p>
 
-                <h6 className="font-semibold text-slate-700 mt-6 mb-3">{t('step3A')}</h6>
-                <Screenshot title={t('catalogScreenshotTitle')}>
-                  <div className="space-y-4">
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                      <div>
-                        <h2 className="text-xl font-bold text-slate-800">{t('myProducts')} (67)</h2>
-                        <p className="text-sm text-slate-600">{t('manageCatalogInv')}</p>
-                      </div>
-                      <div className="flex gap-2">
-                        <div className="relative">
-                          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                          <Input placeholder={t('searchProducts')} className="pl-9 w-48" />
+                  <h6 className="font-semibold text-slate-700 mt-6 mb-3">{t('step3A')}</h6>
+                  <Screenshot title={t('catalogScreenshotTitle')} className="mr-8">
+                    <div className="space-y-4 ">
+                      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div>
+                          <h2 className="text-xl font-bold text-slate-800">{t('myProducts')} (67)</h2>
+                          <p className="text-sm text-slate-600">{t('manageCatalogInv')}</p>
                         </div>
-                        <select className="px-3 py-2 border border-slate-300 rounded-md text-sm">
-                          <option>{t('allCategories')}</option>
-                          <option>{t('grainsCereals')}</option>
-                          <option>{t('dairyProducts')}</option>
-                          <option>{t('freshProduce')}</option>
-                        </select>
-                        <Button className="bg-green-600 hover:bg-green-700">
-                          <Plus className="w-4 h-4 mr-2" />
-                          {t('addProduct')}
-                        </Button>
+                        <div className="flex gap-2 flex-col sm:flex-row">
+                          <div className="relative">
+                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                            <Input placeholder={t('searchProducts')} className="pl-9 w-48" />
+                          </div>
+                          <select className="px-3 py-2 border border-slate-300 rounded-md text-sm">
+                            <option>{t('allCategories')}</option>
+                            <option>{t('grainsCereals')}</option>
+                            <option>{t('dairyProducts')}</option>
+                            <option>{t('freshProduce')}</option>
+                          </select>
+                          <Button className="bg-green-600 hover:bg-green-700">
+                            <Plus className="w-4 h-4 mr-2" />
+                            {t('addProduct')}
+                          </Button>
+                        </div>
                       </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div className="bg-white border rounded-lg p-4 hover:shadow-md transition-shadow">
+                          <div className="flex items-start gap-3 mb-3">
+                            <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 rounded-lg flex items-center justify-center">
+                              <Package className="w-6 h-6 text-green-600" />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h3 className="font-medium text-slate-900 truncate">{t('organicRice')}</h3>
+                              <p className="text-sm text-slate-500">{t('sku', { sku: 'ORG-RICE-1KG' })}</p>
+                              <p className="text-xs text-slate-400">{t('grainsCereals')}</p>
+                            </div>
+                            <Badge className="bg-green-100 text-green-800 text-xs">{t('active')}</Badge>
+                          </div>
+
+                          <div className="space-y-2 text-sm">
+                            <div className="flex justify-between">
+                              <span className="text-slate-500">{t('stock')}</span>
+                              <span className="font-medium">450 units</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-slate-500">{t('myPrice')}</span>
+                              <span className="font-medium">₹85.00</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-slate-500">{t('location')}</span>
+                              <span className="font-medium">A-2-B</span>
+                            </div>
+                          </div>
+
+                          <div className="flex gap-2 mt-4">
+                            <Button size="sm" variant="outline" className="flex-1">
+                              <Eye className="w-3 h-3 mr-1" />
+                              {t('view')}
+                            </Button>
+                            <Button size="sm" variant="outline" className="flex-1">
+                              <Edit className="w-3 h-3 mr-1" />
+                              {t('edit')}
+                            </Button>
+                          </div>
+                        </div>
+
+                        <div className="bg-white border rounded-lg p-4 hover:shadow-md transition-shadow">
+                          <div className="flex items-start gap-3 mb-3">
+                            <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg flex items-center justify-center">
+                              <Package className="w-6 h-6 text-blue-600" />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h3 className="font-medium text-slate-900 truncate">{t('freshMilk')}</h3>
+                              <p className="text-sm text-slate-500">{t('sku', { sku: 'FRESH-MILK-1L' })}</p>
+                              <p className="text-xs text-slate-400">{t('dairyProducts')}</p>
+                            </div>
+                            <Badge className="bg-orange-100 text-orange-800 text-xs">{t('lowStock')}</Badge>
+                          </div>
+
+                          <div className="space-y-2 text-sm">
+                            <div className="flex justify-between">
+                              <span className="text-slate-500">{t('stock')}</span>
+                              <span className="font-medium text-orange-600">25 units</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-slate-500">{t('myPrice')}</span>
+                              <span className="font-medium">₹45.00</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-slate-500">{t('location')}</span>
+                              <span className="font-medium">B-1-A</span>
+                            </div>
+                          </div>
+
+                          <div className="flex gap-2 mt-4">
+                            <Button size="sm" variant="outline" className="flex-1">
+                              <Eye className="w-3 h-3 mr-1" />
+                              {t('view')}
+                            </Button>
+                            <Button size="sm" variant="outline" className="flex-1">
+                              <Edit className="w-3 h-3 mr-1" />
+                              {t('edit')}
+                            </Button>
+                          </div>
+                        </div>
+
+                        <div className="bg-white border rounded-lg p-4 hover:shadow-md transition-shadow">
+                          <div className="flex items-start gap-3 mb-3">
+                            <div className="w-12 h-12 bg-gradient-to-br from-red-100 to-red-200 rounded-lg flex items-center justify-center">
+                              <Package className="w-6 h-6 text-red-600" />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h3 className="font-medium text-slate-900 truncate">{t('organicEggs')}</h3>
+                              <p className="text-sm text-slate-500">{t('sku', { sku: 'ORG-EGG-12' })}</p>
+                              <p className="text-xs text-slate-400">{t('dairyProducts')}</p>
+                            </div>
+                            <Badge className="bg-red-100 text-red-800 text-xs">{t('outOfStock')}</Badge>
+                          </div>
+
+                          <div className="space-y-2 text-sm">
+                            <div className="flex justify-between">
+                              <span className="text-slate-500">{t('stock')}</span>
+                              <span className="font-medium text-red-600">0 units</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-slate-500">{t('myPrice')}</span>
+                              <span className="font-medium">₹120.00</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-slate-500">{t('location')}</span>
+                              <span className="font-medium">B-1-C</span>
+                            </div>
+                          </div>
+
+                          <div className="flex gap-2 mt-4">
+                            <Button size="sm" variant="outline" className="flex-1">
+                              <Eye className="w-3 h-3 mr-1" />
+                              {t('view')}
+                            </Button>
+                            <Button size="sm" variant="outline" className="flex-1">
+                              <Edit className="w-3 h-3 mr-1" />
+                              {t('edit')}
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                      <p className="text-sm text-slate-600">{t('productCardDesc')}</p>
                     </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                      <div className="bg-white border rounded-lg p-4 hover:shadow-md transition-shadow">
-                        <div className="flex items-start gap-3 mb-3">
-                          <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 rounded-lg flex items-center justify-center">
-                            <Package className="w-6 h-6 text-green-600" />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <h3 className="font-medium text-slate-900 truncate">{t('organicRice')}</h3>
-                            <p className="text-sm text-slate-500">{t('sku', {sku: 'ORG-RICE-1KG'})}</p>
-                            <p className="text-xs text-slate-400">{t('grainsCereals')}</p>
-                          </div>
-                          <Badge className="bg-green-100 text-green-800 text-xs">{t('active')}</Badge>
-                        </div>
-                        
-                        <div className="space-y-2 text-sm">
-                          <div className="flex justify-between">
-                            <span className="text-slate-500">{t('stock')}</span>
-                            <span className="font-medium">450 units</span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span className="text-slate-500">{t('myPrice')}</span>
-                            <span className="font-medium">₹85.00</span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span className="text-slate-500">{t('location')}</span>
-                            <span className="font-medium">A-2-B</span>
-                          </div>
-                        </div>
-                        
-                        <div className="flex gap-2 mt-4">
-                          <Button size="sm" variant="outline" className="flex-1">
-                            <Eye className="w-3 h-3 mr-1" />
-                            {t('view')}
-                          </Button>
-                          <Button size="sm" variant="outline" className="flex-1">
-                            <Edit className="w-3 h-3 mr-1" />
-                            {t('edit')}
-                          </Button>
-                        </div>
-                      </div>
-
-                      <div className="bg-white border rounded-lg p-4 hover:shadow-md transition-shadow">
-                        <div className="flex items-start gap-3 mb-3">
-                          <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg flex items-center justify-center">
-                            <Package className="w-6 h-6 text-blue-600" />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <h3 className="font-medium text-slate-900 truncate">{t('freshMilk')}</h3>
-                            <p className="text-sm text-slate-500">{t('sku', {sku: 'FRESH-MILK-1L'})}</p>
-                            <p className="text-xs text-slate-400">{t('dairyProducts')}</p>
-                          </div>
-                          <Badge className="bg-orange-100 text-orange-800 text-xs">{t('lowStock')}</Badge>
-                        </div>
-                        
-                        <div className="space-y-2 text-sm">
-                          <div className="flex justify-between">
-                            <span className="text-slate-500">{t('stock')}</span>
-                            <span className="font-medium text-orange-600">25 units</span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span className="text-slate-500">{t('myPrice')}</span>
-                            <span className="font-medium">₹45.00</span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span className="text-slate-500">{t('location')}</span>
-                            <span className="font-medium">B-1-A</span>
-                          </div>
-                        </div>
-                        
-                        <div className="flex gap-2 mt-4">
-                          <Button size="sm" variant="outline" className="flex-1">
-                            <Eye className="w-3 h-3 mr-1" />
-                            {t('view')}
-                          </Button>
-                          <Button size="sm" variant="outline" className="flex-1">
-                            <Edit className="w-3 h-3 mr-1" />
-                            {t('edit')}
-                          </Button>
-                        </div>
-                      </div>
-
-                      <div className="bg-white border rounded-lg p-4 hover:shadow-md transition-shadow">
-                        <div className="flex items-start gap-3 mb-3">
-                          <div className="w-12 h-12 bg-gradient-to-br from-red-100 to-red-200 rounded-lg flex items-center justify-center">
-                            <Package className="w-6 h-6 text-red-600" />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <h3 className="font-medium text-slate-900 truncate">{t('organicEggs')}</h3>
-                            <p className="text-sm text-slate-500">{t('sku', {sku: 'ORG-EGG-12'})}</p>
-                            <p className="text-xs text-slate-400">{t('dairyProducts')}</p>
-                          </div>
-                          <Badge className="bg-red-100 text-red-800 text-xs">{t('outOfStock')}</Badge>
-                        </div>
-                        
-                        <div className="space-y-2 text-sm">
-                          <div className="flex justify-between">
-                            <span className="text-slate-500">{t('stock')}</span>
-                            <span className="font-medium text-red-600">0 units</span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span className="text-slate-500">{t('myPrice')}</span>
-                            <span className="font-medium">₹120.00</span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span className="text-slate-500">{t('location')}</span>
-                            <span className="font-medium">B-1-C</span>
-                          </div>
-                        </div>
-                        
-                        <div className="flex gap-2 mt-4">
-                          <Button size="sm" variant="outline" className="flex-1">
-                            <Eye className="w-3 h-3 mr-1" />
-                            {t('view')}
-                          </Button>
-                          <Button size="sm" variant="outline" className="flex-1">
-                            <Edit className="w-3 h-3 mr-1" />
-                            {t('edit')}
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                    <p className="text-sm text-slate-600">{t('productCardDesc')}</p>
-                  </div>
-                </Screenshot>
+                  </Screenshot>
 
                 <h6 className="font-semibold text-slate-700 mt-6 mb-3">{t('step3B')}</h6>
                 <Screenshot title={t('addProductScreenshotTitle')}>
@@ -1183,7 +1190,7 @@ export default function ManualVendorPortal() {
                           </select>
                         </div>
                       </div>
-                      
+
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                           <label className="block text-sm font-medium text-slate-700 mb-1">{t('category')}</label>
@@ -1202,9 +1209,9 @@ export default function ManualVendorPortal() {
 
                       <div>
                         <label className="block text-sm font-medium text-slate-700 mb-1">{t('description')}</label>
-                        <textarea 
-                          className="w-full p-3 border border-slate-300 rounded-md text-sm" 
-                          rows="3" 
+                        <textarea
+                          className="w-full p-3 border border-slate-300 rounded-md text-sm"
+                          rows="3"
                           placeholder={t('descPlaceholder')}
                         ></textarea>
                       </div>
@@ -1235,7 +1242,7 @@ export default function ManualVendorPortal() {
                         </div>
                       </div>
 
-                      <div className="flex gap-3 justify-end pt-4 border-t">
+                      <div className="flex gap-3 justify-end pt-4 border-t flex-col sm:flex-row">
                         <Button variant="outline">{t('cancel')}</Button>
                         <Button className="bg-green-600 hover:bg-green-700">{t('submitForApproval')}</Button>
                       </div>
@@ -1276,17 +1283,17 @@ export default function ManualVendorPortal() {
                       <div className="border rounded-lg p-4 bg-slate-50">
                         <div className="flex items-center justify-between mb-2">
                           <h4 className="font-semibold text-slate-900">{t('rackA')}</h4>
-                          <Badge variant="outline">{t('binsCount', {count: 8})}</Badge>
+                          <Badge variant="outline">{t('binsCount', { count: 8 })}</Badge>
                         </div>
                         <div className="text-sm text-slate-600 space-y-1">
                           <p><strong>15</strong> {t('product').toLowerCase()}s</p>
-                          <p><strong>1,240</strong> {t('totalUnits', {count: ''}).trim()}</p>
+                          <p><strong>1,240</strong> {t('totalUnits', { count: '' }).trim()}</p>
                         </div>
                         <div className="mt-3">
                           <div className="flex flex-wrap gap-1">
                             <Badge variant="secondary" className="text-xs">A-1 (3)</Badge>
                             <Badge variant="secondary" className="text-xs">A-2 (5)</Badge>
-                            <Badge variant="secondary" className="text-xs">{t('more', {count: 4})}</Badge>
+                            <Badge variant="secondary" className="text-xs">{t('more', { count: 4 })}</Badge>
                           </div>
                         </div>
                       </div>
@@ -1298,7 +1305,7 @@ export default function ManualVendorPortal() {
                         <AlertTriangle className="w-5 h-5 text-yellow-600 mt-0.5" />
                         <div>
                           <h4 className="font-medium text-yellow-800">{t('unassignedProducts')}</h4>
-                          <p className="text-sm text-yellow-700 mt-1" dangerouslySetInnerHTML={{ __html: t('unassignedProdDesc', {count: 4}) }}></p>
+                          <p className="text-sm text-yellow-700 mt-1" dangerouslySetInnerHTML={{ __html: t('unassignedProdDesc', { count: 4 }) }}></p>
                           <Button size="sm" className="mt-2 bg-yellow-600 hover:bg-yellow-700">
                             <Package className="w-3 h-3 mr-1" />
                             {t('assignLocations')}
@@ -1306,19 +1313,19 @@ export default function ManualVendorPortal() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <p className="text-sm text-slate-600">{t('warehouseOverviewDesc')}</p>
                   </div>
                 </Screenshot>
 
                 <h6 className="font-semibold text-slate-700 mt-6 mb-3">{t('step4B')}</h6>
                 <Screenshot title={t('prodLocScreenshotTitle')}>
-                  <div className="border rounded-lg overflow-hidden">
+                    <div className="border rounded-lg overflow-hidden">
                     <div className="bg-slate-50 px-4 py-3 border-b">
                       <h3 className="font-medium text-slate-800">{t('productLocations')}</h3>
                     </div>
-                    <div className="overflow-x-auto">
-                      <table className="min-w-full">
+                      <div className="w-full overflow-x-auto [-webkit-overflow-scrolling:touch]">
+                        <table className="w-full">
                         <thead className="bg-slate-50 border-b">
                           <tr>
                             <th className="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase">{t('product')}</th>
@@ -1341,7 +1348,7 @@ export default function ManualVendorPortal() {
                               <span className="text-xs text-slate-500 ml-1">units</span>
                             </td>
                             <td className="px-4 py-4 text-center">
-                                <span className="text-xs text-slate-500">75%</span>
+                              <span className="text-xs text-slate-500">75%</span>
                             </td>
                             <td className="px-4 py-4 text-right">
                               <Button size="sm" variant="outline">
@@ -1391,16 +1398,16 @@ export default function ManualVendorPortal() {
 
                     <div className="bg-white border rounded-lg p-6">
                       <h3 className="font-semibold text-lg text-slate-900 mb-4">{t('customerProfile')}</h3>
-                        <h4 className="font-semibold text-lg text-slate-900">RetailOS Supermarket</h4>
-                        <p className="text-slate-500">{t('storeManager')}</p>
-                        <Badge className="bg-green-100 text-green-800">{t('excellent')}</Badge>
-                        <p className="text-sm text-slate-500">{t('pendingAmount')}</p>
-                        <p className="font-bold text-lg text-orange-600">₹12,400</p>
-                        <p className="text-sm text-slate-500">{t('lastOrder')}</p>
-                        <Button size="sm" variant="outline"> <Eye className="w-3 h-3 mr-1" /> {t('orderDetails')} </Button>
-                        <Button size="sm" variant="outline"> <Receipt className="w-3 h-3 mr-1" /> {t('orderHistory')} </Button>
+                      <h4 className="font-semibold text-lg text-slate-900">RetailOS Supermarket</h4>
+                      <p className="text-slate-500">{t('storeManager')}</p>
+                      <Badge className="bg-green-100 text-green-800">{t('excellent')}</Badge>
+                      <p className="text-sm text-slate-500">{t('pendingAmount')}</p>
+                      <p className="font-bold text-lg text-orange-600">₹12,400</p>
+                      <p className="text-sm text-slate-500">{t('lastOrder')}</p>
+                      <Button size="sm" variant="outline"> <Eye className="w-3 h-3 mr-1" /> {t('orderDetails')} </Button>
+                      <Button size="sm" variant="outline"> <Receipt className="w-3 h-3 mr-1" /> {t('orderHistory')} </Button>
                     </div>
-                    
+
                     <p className="text-sm text-slate-600">{t('customerDashDesc')}</p>
                   </div>
                 </Screenshot>
@@ -1409,11 +1416,11 @@ export default function ManualVendorPortal() {
                 <Screenshot title={t('pendingPaymentsScreenshotTitle')}>
                   <div className="border rounded-lg overflow-hidden">
                     <div className="bg-slate-50 px-4 py-3 border-b">
-                      <h3 className="font-medium text-slate-800">{t('pendingPaymentsCount', {count: 3})}</h3>
+                      <h3 className="font-medium text-slate-800">{t('pendingPaymentsCount', { count: 3 })}</h3>
                       <p className="text-sm text-slate-600">{t('pendingPaymentsDesc')}</p>
                     </div>
-                    <div className="overflow-x-auto">
-                      <table className="min-w-full">
+                    <div className="w-full overflow-x-auto sm:overflow-x-visible">
+                      <table className="w-full whitespace-nowrap">
                         <thead className="bg-slate-50 border-b">
                           <tr>
                             <th className="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase">{t('orderId')}</th>
@@ -1431,7 +1438,7 @@ export default function ManualVendorPortal() {
                             <td className="px-4 py-4 text-sm">{t('organicRice')}</td>
                             <td className="px-4 py-4 text-right font-semibold">₹12,450</td>
                             <td className="px-4 py-4 text-center">
-                              <Badge className="bg-red-100 text-red-800">{t('daysOverdueCount', {count: 15})}</Badge>
+                              <Badge className="bg-red-100 text-red-800">{t('daysOverdueCount', { count: 15 })}</Badge>
                             </td>
                             <td className="px-4 py-4 text-right">
                               <Button size="sm" variant="outline">
@@ -1448,7 +1455,7 @@ export default function ManualVendorPortal() {
               </Step>
 
               <Step number="6" title={t('step6Title')}>
-                 <p>{t('step6Intro')}</p>
+                <p>{t('step6Intro')}</p>
                 <h6 className="font-semibold text-slate-700 mt-6 mb-3">{t('step6A')}</h6>
                 <Screenshot title={t('accountStatementScreenshotTitle')}>
                   <p>{t('accountStatementDesc')}</p>

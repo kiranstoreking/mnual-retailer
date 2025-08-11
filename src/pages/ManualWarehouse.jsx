@@ -1075,11 +1075,11 @@ const Screenshot = ({ title, children }) => (
 );
 
 const Step = ({ number, title, children }) => (
-  <div className="flex items-start gap-4 mt-6">
+  <div className="flex items-start gap-4 mt-6 w-full">
     <div className="flex-shrink-0 w-8 h-8 bg-emerald-600 text-white rounded-full flex items-center justify-center font-bold">{number}</div>
-    <div className="flex-grow">
-      <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-2">{title}</h4>
-      <div className="prose prose-slate max-w-none text-sm sm:text-base">
+    <div className="flex-grow min-w-0">
+      <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-6 sm:mb-2">{title}</h4>
+      <div className="prose prose-slate max-w-none text-sm sm:text-base -ml-12 sm:ml-0">
         {children}
       </div>
     </div>
@@ -1146,7 +1146,7 @@ export default function ManualWarehouse() {
                       <div className="space-y-4">
                         <div>
                           <div className="text-xs text-slate-600 text-center mb-2">{t('shelf3')}</div>
-                          <div className="grid grid-cols-5 gap-2">
+                          <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
                             {[1, 2, 3, 4, 5].map(bin => (
                               <div key={bin} className="bg-white border border-blue-300 rounded p-2 text-center">
                                 <div className="text-xs font-semibold text-blue-800">A-3-0{bin}</div>
@@ -1157,7 +1157,7 @@ export default function ManualWarehouse() {
                         </div>
                         <div>
                           <div className="text-xs text-slate-600 text-center mb-2">{t('shelf2')}</div>
-                          <div className="grid grid-cols-5 gap-2">
+                          <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
                             {[1, 2, 3, 4, 5].map(bin => (
                               <div key={bin} className="bg-green-100 border border-green-300 rounded p-2 text-center">
                                 <div className="text-xs font-semibold text-green-800">A-2-0{bin}</div>
@@ -1168,7 +1168,7 @@ export default function ManualWarehouse() {
                         </div>
                         <div>
                           <div className="text-xs text-slate-600 text-center mb-2">{t('shelf1')}</div>
-                          <div className="grid grid-cols-5 gap-2">
+                          <div className="grid  grid-cols-3 sm:grid-cols-5 gap-2">
                             {[1, 2, 3, 4, 5].map(bin => (
                               <div key={bin} className="bg-yellow-100 border border-yellow-300 rounded p-2 text-center">
                                 <div className="text-xs font-semibold text-yellow-800">A-1-0{bin}</div>
@@ -1210,13 +1210,13 @@ export default function ManualWarehouse() {
 
                 <h6 className="font-semibold text-slate-700 mt-6 mb-3">{t('step2H6A')}</h6>
                 <Screenshot title={t('screenshot2Title')}>
-                  <div className="space-y-6">
-                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-                      <div>
-                        <h2 className="text-xl font-bold text-slate-800">{t('screenshot2H2')}</h2>
+                    <div className="space-y-6">
+                      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                        <div>
+                          <h2 className="text-xl font-bold text-slate-800 break-words">{t('screenshot2H2')}</h2>
                         <p className="text-sm text-slate-500">{t('screenshot2P')}</p>
                       </div>
-                      <div className="flex gap-2">
+                        <div className="flex flex-wrap gap-2">
                         <Button className="bg-emerald-600 hover:bg-emerald-700">
                           <Plus className="w-4 h-4 mr-2" />
                           {t('addLocation')}
@@ -1249,9 +1249,9 @@ export default function ManualWarehouse() {
                     </div>
 
                     <div className="bg-slate-50 border border-slate-200 rounded-lg p-4">
-                      <div className="flex items-center justify-between mb-4">
+                      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between mb-4">
                         <h3 className="font-semibold text-slate-700">{t('warehouseLayout')}</h3>
-                        <div className="flex gap-2">
+                        <div className="flex flex-wrap gap-2">
                           <Badge className="bg-green-100 text-green-800">{t('availableBadge')}</Badge>
                           <Badge className="bg-yellow-100 text-yellow-800">{t('nearlyFullBadge')}</Badge>
                           <Badge className="bg-red-100 text-red-800">{t('atCapacityBadge')}</Badge>
@@ -1264,7 +1264,7 @@ export default function ManualWarehouse() {
                           <h4 className="font-semibold text-center mb-4 text-slate-700">{t('rackA')}</h4>
                           <div className="space-y-3">
                             <div className="text-xs text-slate-500 text-center">{t('shelf1')}</div>
-                            <div className="grid grid-cols-5 gap-2">
+                            <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
                               {[1, 2, 3, 4, 5].map(bin => (
                                 <div key={bin} className="bg-green-100 border border-green-300 rounded p-2 text-center cursor-pointer hover:shadow-sm transition-shadow">
                                   <div className="text-xs font-semibold">A-1-0{bin}</div>
@@ -1273,7 +1273,7 @@ export default function ManualWarehouse() {
                               ))}
                             </div>
                             <div className="text-xs text-slate-500 text-center">{t('shelf2')}</div>
-                            <div className="grid grid-cols-5 gap-2">
+                            <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
                               {[1, 2, 3, 4, 5].map(bin => (
                                 <div key={bin} className="bg-yellow-100 border border-yellow-300 rounded p-2 text-center cursor-pointer hover:shadow-sm transition-shadow">
                                   <div className="text-xs font-semibold">A-2-0{bin}</div>
@@ -1289,7 +1289,7 @@ export default function ManualWarehouse() {
                           <h4 className="font-semibold text-center mb-4 text-slate-700">Rack B</h4>
                           <div className="space-y-3">
                             <div className="text-xs text-slate-500 text-center">{t('shelf1')}</div>
-                            <div className="grid grid-cols-5 gap-2">
+                            <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
                               {[1, 2, 3, 4, 5].map(bin => (
                                 <div key={bin} className={`${bin <= 2 ? 'bg-red-100 border-red-300' : 'bg-green-100 border-green-300'} border rounded p-2 text-center cursor-pointer hover:shadow-sm transition-shadow`}>
                                   <div className="text-xs font-semibold">B-1-0{bin}</div>
@@ -1307,7 +1307,7 @@ export default function ManualWarehouse() {
                           <h4 className="font-semibold text-center mb-4 text-slate-700">{t('rackC')}</h4>
                           <div className="space-y-3">
                             <div className="text-xs text-slate-500 text-center">{t('shelf1')}</div>
-                            <div className="grid grid-cols-5 gap-2">
+                            <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
                               {[1, 2, 3, 4, 5].map(bin => (
                                 <div key={bin} className="bg-slate-100 border border-slate-300 rounded p-2 text-center cursor-pointer hover:shadow-sm transition-shadow">
                                   <div className="text-xs font-semibold">C-1-0{bin}</div>
@@ -1452,7 +1452,7 @@ export default function ManualWarehouse() {
                         </div>
                       </div>
 
-                      <div className="flex justify-end gap-3">
+                      <div className="flex flex-wrap justify-end gap-3">
                         <Button variant="outline">{t('cancel')}</Button>
                         <Button className="bg-emerald-600 hover:bg-emerald-700">
                           <CheckCircle className="w-4 h-4 mr-2" />
@@ -1516,7 +1516,7 @@ export default function ManualWarehouse() {
 
                 <h6 className="font-semibold text-slate-700 mt-6 mb-3">{t('step3H6C')}</h6>
                 <Screenshot title={t('screenshot6Title')}>
-                  <div className="border border-slate-200 rounded-lg p-6">
+                      <div className="border border-slate-200 rounded-lg p-6">
                     <h3 className="text-lg font-bold text-slate-800 mb-4">{t('bulkCreateLocations')}</h3>
                     <p className="text-sm text-slate-500 mb-6">{t('createMultipleBins')}</p>
                     
@@ -1525,18 +1525,18 @@ export default function ManualWarehouse() {
                         <div className="space-y-4">
                           <div>
                             <label className="block text-sm font-medium text-slate-700 mb-2">{t('rackRange')}</label>
-                            <div className="flex items-center gap-2">
-                              <Input placeholder={t('fromPlaceholder')} className="flex-1" />
+                            <div className="flex flex-col sm:flex-row items-stretch gap-2">
+                              <Input placeholder={t('fromPlaceholder')} className="flex-1 min-w-0" />
                               <span className="text-slate-500">{t('to')}</span>
-                              <Input placeholder={t('toPlaceholder')} className="flex-1" />
+                              <Input placeholder={t('toPlaceholder')} className="flex-1 min-w-0" />
                             </div>
                           </div>
                           <div>
                             <label className="block text-sm font-medium text-slate-700 mb-2">{t('shelfRange')}</label>
-                            <div className="flex items-center gap-2">
-                              <Input type="number" placeholder={`${t('from')} (e.g., 1)`} className="flex-1" />
+                            <div className="flex flex-col sm:flex-row items-stretch gap-2">
+                              <Input type="number" placeholder={`${t('from')} (e.g., 1)`} className="flex-1 min-w-0" />
                               <span className="text-slate-500">{t('to')}</span>
-                              <Input type="number" placeholder={`${t('to')} (e.g., 3)`} className="flex-1" />
+                              <Input type="number" placeholder={`${t('to')} (e.g., 3)`} className="flex-1 min-w-0" />
                             </div>
                           </div>
                           <div>
@@ -1551,7 +1551,7 @@ export default function ManualWarehouse() {
                         
                         <div className="space-y-4">
                           <h4 className="font-medium text-slate-700">{t('preview')}</h4>
-                          <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 max-h-64 overflow-y-auto">
+                              <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 max-h-64 overflow-y-auto overflow-x-auto">
                             <div className="space-y-1 text-sm">
                               <div className="font-medium text-slate-700 mb-2">{t('totalLocations')}</div>
                               <div className="space-y-1 text-slate-600">
@@ -1563,7 +1563,7 @@ export default function ManualWarehouse() {
                               </div>
                             </div>
                           </div>
-                          <div className="flex justify-end gap-3">
+                              <div className="flex flex-wrap justify-end gap-3">
                             <Button variant="outline">{t('cancel')}</Button>
                             <Button className="bg-blue-600 hover:bg-blue-700">
                               {t('createLocations')}
@@ -1605,9 +1605,9 @@ export default function ManualWarehouse() {
                     <div className="border border-slate-200 rounded-lg p-4">
                       <h4 className="font-medium text-slate-700 mb-4">{t('allocationSuggestions')}</h4>
                       <div className="space-y-3">
-                        <div className="flex items-center justify-between p-3 bg-green-50 border border-green-200 rounded">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 p-3 bg-green-50 border border-green-200 rounded">
                           <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 bg-green-100 rounded flex items-center justify-center">
+                              <div className="w-10 h-10 bg-green-100 rounded flex items-center justify-center flex-shrink-0">
                               <MapPin className="w-5 h-5 text-green-600" />
                             </div>
                             <div>
@@ -1618,9 +1618,9 @@ export default function ManualWarehouse() {
                           <Badge className="bg-green-100 text-green-800">{t('bestMatch')}</Badge>
                         </div>
                         
-                        <div className="flex items-center justify-between p-3 bg-blue-50 border border-blue-200 rounded">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 p-3 bg-blue-50 border border-blue-200 rounded">
                           <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 bg-blue-100 rounded flex items-center justify-center">
+                              <div className="w-10 h-10 bg-blue-100 rounded flex items-center justify-center flex-shrink-0">
                               <MapPin className="w-5 h-5 text-blue-600" />
                             </div>
                             <div>
@@ -1631,9 +1631,9 @@ export default function ManualWarehouse() {
                           <Badge className="bg-blue-100 text-blue-800">{t('goodOption')}</Badge>
                         </div>
                         
-                        <div className="flex items-center justify-between p-3 bg-amber-50 border border-amber-200 rounded">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 p-3 bg-amber-50 border border-amber-200 rounded">
                           <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 bg-amber-100 rounded flex items-center justify-center">
+                              <div className="w-10 h-10 bg-amber-100 rounded flex items-center justify-center flex-shrink-0">
                               <MapPin className="w-5 h-5 text-amber-600" />
                             </div>
                             <div>
@@ -1645,7 +1645,7 @@ export default function ManualWarehouse() {
                         </div>
                       </div>
                       
-                      <div className="mt-4 flex justify-end gap-3">
+                      <div className="mt-4 flex flex-wrap justify-end gap-3">
                         <Button variant="outline">{t('manualSelection')}</Button>
                         <Button className="bg-emerald-600 hover:bg-emerald-700">
                           {t('acceptRecommendation')}
@@ -1666,7 +1666,7 @@ export default function ManualWarehouse() {
                         <div>
                           <h4 className="font-medium text-slate-700 mb-3">{t('sourceLocation')}</h4>
                           <div className="border border-slate-200 rounded-lg p-4">
-                            <div className="flex items-center gap-3 mb-3">
+                              <div className="flex items-center gap-3 mb-3">
                               <div className="w-10 h-10 bg-blue-100 rounded flex items-center justify-center">
                                 <Package className="w-5 h-5 text-blue-600" />
                               </div>
@@ -1676,9 +1676,9 @@ export default function ManualWarehouse() {
                               </div>
                             </div>
                             <div className="space-y-2">
-                              <div className="flex justify-between text-sm">
+                              <div className="flex flex-wrap items-center justify-between gap-2 text-sm">
                                 <span className="text-slate-600">{t('product')}</span>
-                                <span className="font-medium">Organic Basmati Rice 1kg</span>
+                                <span className="font-medium break-words">Organic Basmati Rice 1kg</span>
                               </div>
                               <div className="flex justify-between text-sm">
                                 <span className="text-slate-600">{t('currentStock')}</span>
@@ -1705,7 +1705,7 @@ export default function ManualWarehouse() {
                             </div>
                             <div className="space-y-2">
                               <div className="p-3 border border-emerald-200 bg-emerald-50 rounded cursor-pointer">
-                                <div className="flex items-center justify-between">
+                                <div className="flex flex-wrap items-center justify-between gap-2">
                                   <div>
                                     <div className="font-medium text-emerald-800">A-1-04</div>
                                     <div className="text-sm text-emerald-600">40 units available space</div>
@@ -1727,13 +1727,13 @@ export default function ManualWarehouse() {
                       <div className="border border-blue-200 bg-blue-50 rounded-lg p-4">
                         <h5 className="font-medium text-blue-800 mb-2">{t('movementSummary')}</h5>
                         <div className="text-sm text-blue-700 space-y-1">
-                          <div>{t('moving')} 30 units of Organic Basmati Rice 1kg</div>
+                          <div className="break-words">{t('moving')} 30 units of Organic Basmati Rice 1kg</div>
                           <div>{t('fromTo')}</div>
                           <div>{t('reason')}</div>
                         </div>
                       </div>
                       
-                      <div className="flex justify-end gap-3">
+                      <div className="flex flex-wrap justify-end gap-3">
                         <Button variant="outline">{t('cancelMovement')}</Button>
                         <Button className="bg-blue-600 hover:bg-blue-700">
                           {t('confirmMovement')}
@@ -1744,15 +1744,15 @@ export default function ManualWarehouse() {
                 </Screenshot>
               </Step>
 
-              <div className="mt-12 p-6 bg-amber-50 border border-amber-200 rounded-lg">
+              <div className="mt-12 p-4 sm:p-6 bg-amber-50 border border-amber-200 rounded-lg">
                 <h3 className="text-lg font-semibold text-amber-800 mb-2">{t('nextStepsTitle')}</h3>
                 <p className="text-amber-700 mb-4">
                   {t('nextStepsDescription')}
                 </p>
-                <Link to={createPageUrl('ManualProductContent')} className="inline-block">
-                  <Button className="bg-amber-600 hover:bg-amber-700">
-                    {t('nextStepsButton')}
-                    <ArrowLeft className="w-4 h-4 ml-2 rotate-180" />
+                <Link to={createPageUrl('ManualProductContent')} className="inline-block w-full sm:w-auto">
+                  <Button className="bg-amber-600 hover:bg-amber-700 w-full sm:w-auto text-sm sm:text-base px-3 sm:px-4 py-2 sm:py-2.5">
+                    <span className="truncate">{t('nextStepsButton')}</span>
+                    <ArrowLeft className="w-4 h-4 ml-2 rotate-180 flex-shrink-0" />
                   </Button>
                 </Link>
               </div>

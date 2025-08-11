@@ -19,18 +19,18 @@ const Screenshot = ({ title, children }) => (
     <div className="bg-slate-200 px-4 py-2 border-b border-slate-300">
       <h5 className="font-semibold text-slate-700">{title}</h5>
     </div>
-    <div className="p-4 md:p-6 bg-white">
+    <div className="p-4 md:p-6 bg-white ">
       {children}
     </div>
   </div>
 );
 
 const Step = ({ number, title, children }) => (
-  <div className="flex items-start gap-4 mt-8">
+  <div className="flex items-start gap-4 mt-8 w-full">
     <div className="flex-shrink-0 w-8 h-8 bg-sky-600 text-white rounded-full flex items-center justify-center font-bold text-sm">{number}</div>
-    <div className="flex-grow">
-      <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-3">{title}</h4>
-      <div className="prose prose-slate max-w-none text-sm sm:text-base">
+    <div className="flex-grow min-w-0">
+      <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-6 sm:mb-3">{title}</h4>
+      <div className="prose prose-slate max-w-none text-sm sm:text-base break-words -ml-12 sm:ml-0">
         {children}
       </div>
     </div>
@@ -763,25 +763,25 @@ export default function ManualPayLater() {
                 <p>{t('step1Intro')}</p>
                 <Screenshot title={t('dashboardTitle')}>
                   <div className="space-y-6">
-                    <div className="flex justify-between items-start">
+                    <div className="flex justify-between items-start flex-col sm:flex-row gap-3 sm:gap-0">
                       <div>
                         <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
                           <Wallet className="w-6 h-6 text-sky-600" /> {t('dashboardTitle')}
                         </h2>
                         <p className="text-slate-500 mt-1">{t('dashboardDesc')}</p>
                       </div>
-                      <div className="flex gap-2">
+                      <div className="flex gap-2 flex-col sm:flex-row">
                         <Button variant="outline" size="sm"><Plus className="w-4 h-4 mr-2" />{t('recordB2CPayment')}</Button>
                         <Button variant="outline" size="sm"><Plus className="w-4 h-4 mr-2" />{t('recordB2BPayment')}</Button>
                       </div>
                     </div>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 overflow-x-auto [-webkit-overflow-scrolling:touch]">
                       <Card><CardHeader><CardTitle className="text-sm font-medium text-slate-500">{t('totalCreditLimit')}</CardTitle></CardHeader><CardContent><p className="text-2xl font-bold">₹12.5L</p></CardContent></Card>
                       <Card><CardHeader><CardTitle className="text-sm font-medium text-slate-500">{t('totalOutstanding')}</CardTitle></CardHeader><CardContent><p className="text-2xl font-bold text-red-600">₹4.8L</p></CardContent></Card>
                       <Card><CardHeader><CardTitle className="text-sm font-medium text-slate-500">{t('activeB2CWallets')}</CardTitle></CardHeader><CardContent><p className="text-2xl font-bold">245</p></CardContent></Card>
                       <Card><CardHeader><CardTitle className="text-sm font-medium text-slate-500">{t('activeB2BWallets')}</CardTitle></CardHeader><CardContent><p className="text-2xl font-bold">58</p></CardContent></Card>
                     </div>
-                    <div className="border rounded-lg bg-white">
+                    <div className="border rounded-lg bg-white overflow-x-auto [-webkit-overflow-scrolling:touch]">
                       <div className="flex space-x-1 bg-slate-100 p-1 rounded-t-lg border-b">
                         <button className="px-3 py-1.5 bg-white rounded-md shadow-sm text-sm font-medium flex items-center gap-2"><Users className="w-4 h-4 text-orange-600"/>{t('b2cManagement')}</button>
                         <button className="px-3 py-1.5 text-slate-600 text-sm font-medium flex items-center gap-2"><Building2 className="w-4 h-4 text-blue-600"/>{t('b2bManagement')}</button>
@@ -799,7 +799,7 @@ export default function ManualPayLater() {
               <Step number="2" title={t('step2Title')}>
                 <p>{t('step2Intro')}</p>
                 <Screenshot title={`${t('b2cManagement')} - ${t('customer')} ${t('list')}`}>
-                  <div className="space-y-4">
+                  <div className="space-y-4 ">
                     <div className="flex flex-col md:flex-row gap-3">
                       <div className="relative flex-grow">
                         <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
@@ -843,8 +843,8 @@ export default function ManualPayLater() {
                       </div>
                       <select className="border rounded-md px-3 py-2 text-sm bg-white"><option>{t('allStatuses')}</option><option>{t('active')}</option><option>{t('paused')}</option><option>{t('stopped')}</option></select>
                     </div>
-                    <div className="overflow-x-auto border rounded-lg">
-                      <table className="min-w-full text-sm">
+                    <div className="w-full overflow-x-auto border rounded-lg [-webkit-overflow-scrolling:touch]">
+                      <table className="w-full whitespace-nowrap text-sm">
                         <thead className="bg-slate-50"><tr className="border-b"><th className="p-2 text-left">{t('retailer')}</th><th className="p-2 text-left">{t('kycStatus')}</th><th className="p-2 text-left">{t('walletStatus')}</th><th className="p-2 text-left">{t('creditLimit')}</th><th className="p-2 text-left">{t('outstandingBalance')}</th><th className="p-2 text-right">{t('actions')}</th></tr></thead>
                         <tbody>
                           <tr className="border-b"><td className="p-2 font-medium">{t('greenValley')}</td><td className="p-2"><Badge className="bg-green-100 text-green-800">{t('verified')}</Badge></td><td className="p-2"><Badge className="bg-green-100 text-green-800">{t('active')}</Badge></td><td className="p-2">₹50,000</td><td className="p-2 text-red-600">₹12,400</td><td className="p-2 flex justify-end gap-1"><Button variant="outline" size="xs">{t('setLimit')}</Button><Button variant="ghost" size="xs">{t('viewStatement')}</Button></td></tr>

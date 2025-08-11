@@ -26,12 +26,12 @@ const Screenshot = ({ title, children }) => (
 );
 
 const Step = ({ number, title, children }) => (
-  <div className="flex items-start gap-4 mt-8">
-    <div className="flex-shrink-0 w-8 h-8 bg-teal-600 text-white rounded-full flex items-center justify-center font-bold text-sm">{number}</div>
-    <div className="flex-grow">
-      <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-3">{title}</h4>
-      <div className="prose prose-slate max-w-none text-sm sm:text-base">
-        {children}
+  <div className="flex items-start gap-4 mt-8 w-full">
+    <div className="flex-shrink-0 w-8 h-8 bg-red-600 text-white rounded-full flex items-center justify-center font-bold text-sm">{number}</div>
+    <div className="flex-grow min-w-0">
+    <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-6 sm:mb-3">{title}</h4>
+    <div className="prose prose-slate max-w-none text-sm sm:text-base break-words -ml-12 sm:ml-0">
+    {children}
       </div>
     </div>
   </div>
@@ -528,7 +528,7 @@ export default function ManualLogistics() {
                 <p>{t('step1Intro')}</p>
                 <Screenshot title={t('dashboardScreenshotTitle')}>
                   <div className="space-y-6">
-                    <div className="flex justify-between items-center">
+                    <div className="flex justify-between items-center flex-col sm:flex-row gap-4 sm:gap-0">
                       <div>
                         <h2 className="text-xl font-bold text-slate-800">{t('lastMileManagement')}</h2>
                         <p className="text-sm text-slate-600">{t('opsControlCenter')}</p>
@@ -574,7 +574,7 @@ export default function ManualLogistics() {
                     </div>
 
                     <div className="bg-gradient-to-r from-teal-50 to-cyan-50 rounded-lg p-6 border border-teal-200">
-                      <div className="flex items-center justify-between">
+                      <div className="flex items-center justify-between flex-col sm:flex-row gap-4 sm:gap-0">
                         <div>
                           <h3 className="font-semibold text-teal-800">{t('dailyPerformance')}</h3>
                           <p className="text-sm text-teal-700">{t('todaysMetrics')}</p>
@@ -796,7 +796,7 @@ export default function ManualLogistics() {
                           <div><div className="text-lg font-bold text-blue-600">156</div><div className="text-amber-700">{t('deliveriesCount')}</div></div>
                           <div><div className="text-lg font-bold text-purple-600">₹292</div><div className="text-amber-700">{t('avgPerDay')}</div></div>
                         </div>
-                        <div className="mt-3 flex gap-2">
+                        <div className="mt-3 flex  flex-col sm:flex-row gap-2 ">
                           <Button size="sm" className="bg-green-600 hover:bg-green-700"><DollarSign className="w-4 h-4 mr-1" />{t('processPayment')}</Button>
                           <Button size="sm" variant="outline">{t('viewStatement')}</Button>
                         </div>
@@ -912,9 +912,9 @@ export default function ManualLogistics() {
                           </div>
                         </div>
                       </div>
-                      <div className="flex justify-between items-center">
+                      <div className="flex justify-between items-center flex-col sm:flex-row gap-4 sm:gap-0">
                         <div className="text-sm text-slate-500">{t('ordersSelected', {count: 3})}</div>
-                        <div className="flex gap-3"><Button variant="outline">{t('bulkAssign')}</Button><Button className="bg-orange-600 hover:bg-orange-700">{t('smartAutoAssign')}</Button></div>
+                        <div className="flex gap-3 flex-col sm:flex-row gap-4 "><Button variant="outline">{t('bulkAssign')}</Button><Button className="bg-orange-600 hover:bg-orange-700">{t('smartAutoAssign')}</Button></div>
                       </div>
                     </div>
                   </div>
@@ -926,7 +926,7 @@ export default function ManualLogistics() {
                     <h3 className="font-semibold text-slate-700 mb-4">{t('ordersInTransit')}</h3>
                     <div className="space-y-4">
                       <div className="border border-amber-200 bg-amber-50 rounded-lg p-4">
-                        <div className="flex items-start justify-between">
+                        <div className="flex items-start justify-between flex-col sm:flex-row gap-4 sm:gap-0">
                           <div className="flex items-start gap-4">
                             <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center"><MapPin className="w-6 h-6 text-amber-600" /></div>
                             <div>
@@ -958,7 +958,7 @@ export default function ManualLogistics() {
                         </div>
                       </div>
                       <div className="border border-red-200 bg-red-50 rounded-lg p-4">
-                        <div className="flex items-start justify-between">
+                        <div className="flex items-start justify-between flex-col sm:flex-row gap-4 sm:gap-0">
                             <div className="flex items-start gap-4">
                                 <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center"><AlertTriangle className="w-6 h-6 text-red-600" /></div>
                                 <div>
@@ -1004,7 +1004,7 @@ export default function ManualLogistics() {
                         </div>
                         <div className="bg-green-50 border border-green-200 rounded-lg p-4">
                             <h4 className="font-medium text-green-800 mb-3">{t('codCollectionsByPersonnel')}</h4>
-                            <div className="flex items-center justify-between p-3 bg-white rounded border">
+                            <div className="flex items-center justify-between p-3 bg-white rounded border ">
                                 <div><div className="font-medium text-slate-800">Arjun Singh</div></div>
                                 <div className="text-right">
                                     <div className="font-bold text-green-600">₹3,450</div>
@@ -1086,7 +1086,7 @@ export default function ManualLogistics() {
                     <h3 className="font-semibold text-slate-700 mb-4">{t('agencyPaymentProcessing')}</h3>
                     <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
                         <h4 className="font-medium text-amber-800 mb-3">{t('outstandingPayments', {amount: '4,145.00'})}</h4>
-                        <div className="flex items-center justify-between p-3 bg-white rounded border">
+                        <div className="flex items-center justify-between p-3 bg-white rounded border flex-col sm:flex-row gap-4 sm:gap-0">
                             <div><div className="font-medium text-slate-800">Express Delivery Services</div><div className="text-xs text-slate-400">{t('paymentDue')} May 25, 2024</div></div>
                             <div className="text-right"><div className="font-bold text-amber-600">₹2,345.00</div></div>
                             <Button size="sm" className="bg-green-600 hover:bg-green-700"><DollarSign className="w-4 h-4 mr-1" />{t('payNow')}</Button>

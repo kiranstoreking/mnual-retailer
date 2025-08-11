@@ -350,11 +350,11 @@ const Screenshot = ({ title, children }) => (
 );
 
 const Step = ({ number, title, children }) => (
-  <div className="flex items-start gap-4 mt-8">
+  <div className="flex items-start gap-4 mt-8 w-full">
     <div className="flex-shrink-0 w-8 h-8 bg-slate-600 text-white rounded-full flex items-center justify-center font-bold text-sm">{number}</div>
-    <div className="flex-grow">
-      <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-3">{title}</h4>
-      <div className="prose prose-slate max-w-none text-sm sm:text-base">
+    <div className="flex-grow min-w-0">
+      <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-6 sm:mb-3">{title}</h4>
+      <div className="prose prose-slate max-w-none text-sm sm:text-base break-words -ml-12 sm:ml-0">
         {children}
       </div>
     </div>
@@ -703,7 +703,7 @@ export default function ManualInventory() {
                   </ul>
                 </div>
 
-                <h6 className="font-semibold text-slate-700 mt-6 mb-3">D. {t('actionButtonsExplained')}</h6>
+                <h6 className="font-semibold text-slate-700 mt-6 mb-3  sm:ml-0">D. { t('actionButtonsExplained')}</h6>
                 <Screenshot title={`${t('productInventory')} - ${t('actionButtonsExplained')}`}>
                   <div className="space-y-4">
                     <div className="flex items-center justify-center gap-3 p-4 bg-slate-50 rounded-lg">
@@ -898,7 +898,7 @@ export default function ManualInventory() {
                     <div className="space-y-3">
                       {/* Critical Alert */}
                       <div className="border border-red-200 bg-red-50 rounded-lg p-4">
-                        <div className="flex items-start justify-between">
+                        <div className="flex items-start justify-between flex-col sm:flex-row gap-3 sm:gap-0">
                           <div className="flex items-start gap-3">
                             <div className="w-10 h-10 rounded-lg border bg-gradient-to-br from-yellow-100 to-yellow-200 flex items-center justify-center">
                               <Package className="w-5 h-5 text-yellow-600" />
@@ -906,7 +906,7 @@ export default function ManualInventory() {
                             <div>
                               <p className="font-medium text-slate-800">Sunflower Cooking Oil 1L</p>
                               <p className="text-xs text-slate-500">Golden Valley • {t('sku')} GV-OIL-SF-1L</p>
-                              <div className="flex items-center gap-2 mt-1">
+                              <div className="flex sm:items-center gap-2 mt-1 flex-col sm:flex-row gap-1">
                                 <Badge className="bg-red-100 text-red-800 text-xs">{t('criticalOutOfStock')}</Badge>
                                 <span className="text-xs text-slate-600">{t('lastSold')} 2 days ago</span>
                               </div>
@@ -924,7 +924,7 @@ export default function ManualInventory() {
 
                       {/* High Priority Alert */}
                       <div className="border border-orange-200 bg-orange-50 rounded-lg p-4">
-                        <div className="flex items-start justify-between">
+                        <div className="flex items-start justify-between flex-col sm:flex-row gap-3 sm:gap-0">
                           <div className="flex items-start gap-3">
                             <div className="w-10 h-10 rounded-lg border bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
                               <Package className="w-5 h-5 text-blue-600" />
@@ -932,7 +932,7 @@ export default function ManualInventory() {
                             <div>
                               <p className="font-medium text-slate-800">Fresh Milk 1L Packet</p>
                               <p className="text-xs text-slate-500">Dairy Fresh • {t('sku')} DF-MILK-1L</p>
-                              <div className="flex items-center gap-2 mt-1">
+                              <div className="flex sm:items-center gap-2 mt-1 flex-col sm:flex-row gap-1">
                                 <Badge className="bg-orange-100 text-orange-800 text-xs">{t('highLowStock', { count: 8 })}</Badge>
                                 <span className="text-xs text-slate-600">{t('minLevel')} 20</span>
                               </div>
@@ -950,7 +950,7 @@ export default function ManualInventory() {
 
                       {/* Medium Priority Alert */}
                       <div className="border border-yellow-200 bg-yellow-50 rounded-lg p-4">
-                        <div className="flex items-start justify-between">
+                        <div className="flex items-start justify-between flex-col sm:flex-row gap-3 sm:gap-0">
                           <div className="flex items-start gap-3">
                             <div className="w-10 h-10 rounded-lg border bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
                               <Package className="w-5 h-5 text-green-600" />
@@ -958,7 +958,7 @@ export default function ManualInventory() {
                             <div>
                               <p className="font-medium text-slate-800">Organic Greek Yogurt 200g</p>
                               <p className="text-xs text-slate-500">Nature's Best • {t('sku')} NB-YGT-GR-200</p>
-                              <div className="flex items-center gap-2 mt-1">
+                              <div className="flex sm:items-center gap-2 mt-1 flex-col sm:flex-row gap-1">
                                 <Badge className="bg-yellow-100 text-yellow-800 text-xs">{t('mediumNearExpiry', { count: 15 })}</Badge>
                                 <span className="text-xs text-slate-600">{t('unitsInStock', { count: 25 })}</span>
                               </div>
@@ -996,15 +996,15 @@ export default function ManualInventory() {
                 <Screenshot title={`${t('productDetailHeader')} - ${t('productHeaderAndBasicInformation')}`}>
                   <div className="space-y-6">
                     <div className="flex items-start gap-6">
-                      <div className="w-30 h-30 rounded-lg border shadow-sm bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center">
-                        <Package className="w-16 h-16 text-slate-400" />
+                      <div className="w-30 h-30 rounded-lg border hidden sm:block shadow-sm bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center">
+                        <Package className="w-16 h-16 text-slate-400 " />
                       </div>
                       <div className="flex-1">
-                        <div className="flex items-start justify-between mb-4">
+                        <div className="flex items-start justify-between mb-4 flex-col-reverse sm:flex-row gap-3 sm:gap-0">
                           <div>
                             <h1 className="text-2xl font-bold text-slate-900">Clean & Clear Face Wash - Aqua, 50ml</h1>
                             <p className="text-slate-600 mt-1">{t('personalCare')} • Healthy Harvest</p>
-                            <div className="flex items-center gap-4 mt-2 text-sm">
+                            <div className="flex sm:items-center gap-4 mt-2 text-sm flex-col sm:flex-row gap-1">
                               <span className="font-mono bg-slate-100 px-2 py-1 rounded">{t('sku')} 3517688815842</span>
                               <Badge className="bg-green-100 text-green-800">{t('active')}</Badge>
                               <Badge className="bg-red-100 text-red-800">{t('outOfStock')}</Badge>

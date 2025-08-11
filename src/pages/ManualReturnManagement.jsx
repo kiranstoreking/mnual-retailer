@@ -25,11 +25,11 @@ const Screenshot = ({ title, children }) => (
 );
 
 const Step = ({ number, title, children }) => (
-  <div className="flex items-start gap-4 mt-8">
+  <div className="flex items-start gap-4 mt-8 w-full">
     <div className="flex-shrink-0 w-8 h-8 bg-red-600 text-white rounded-full flex items-center justify-center font-bold text-sm">{number}</div>
-    <div className="flex-grow">
-      <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-3">{title}</h4>
-      <div className="prose prose-slate max-w-none text-sm sm:text-base">
+    <div className="flex-grow min-w-0">
+      <h4 className="text-lg md:text-xl font-semibold text-slate-800 mb-6 sm:mb-3">{title}</h4>
+      <div className="prose prose-slate max-w-none text-sm sm:text-base break-words -ml-12 sm:ml-0 ">
         {children}
       </div>
     </div>
@@ -407,7 +407,7 @@ export default function ManualReturnManagement() {
                           <p className="text-slate-600">{t('manageAllReturns')}</p>
                         </div>
                       </div>
-                      <div className="flex gap-3">
+                      <div className="flex gap-3 flex-col md:flex-row">
                         <Button className="bg-red-600 hover:bg-red-700 flex items-center gap-2">
                           <Plus className="w-4 h-4" />
                           {t('createProductReturn')}
