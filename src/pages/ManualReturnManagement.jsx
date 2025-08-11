@@ -408,7 +408,7 @@ export default function ManualReturnManagement() {
                         </div>
                       </div>
                       <div className="flex gap-3 flex-col md:flex-row">
-                        <Button className="bg-red-600 hover:bg-red-700 flex items-center gap-2">
+                        <Button className="bg-red-600 text-white hover:bg-red-700 flex items-center gap-2">
                           <Plus className="w-4 h-4" />
                           {t('createProductReturn')}
                         </Button>
@@ -511,7 +511,7 @@ export default function ManualReturnManagement() {
                               <h4 className="font-medium text-slate-900 mt-2">{t('organicApples')}</h4>
                               <p className="text-xs text-red-600 mt-1">{t('waterDamage')}</p>
                             </div>
-                            <Badge variant="destructive">{t('units', {count: 15})}</Badge>
+                            <Badge variant="destructive" className="text-white">{t('units', {count: 15})}</Badge>
                           </div>
                           <div className="space-y-2 text-sm">
                             <div className="flex items-center gap-2">
@@ -534,7 +534,7 @@ export default function ManualReturnManagement() {
                             </div>
                           </div>
                           <div className="mt-4">
-                            <Button size="sm" className="w-full bg-red-600 hover:bg-red-700">
+                            <Button size="sm" className="w-full bg-red-600 text-white hover:bg-red-700">
                               <ArrowUpDown className="w-4 h-4 mr-2" />
                               {t('initiateReturn')}
                             </Button>
@@ -547,7 +547,7 @@ export default function ManualReturnManagement() {
                               <h4 className="font-medium text-slate-900 mt-2">{t('dairyMilk')}</h4>
                               <p className="text-xs text-red-600 mt-1">{t('packagingDefect')}</p>
                             </div>
-                            <Badge variant="destructive">{t('units', {count: 8})}</Badge>
+                            <Badge variant="destructive" className="text-white">{t('units', {count: 8})}</Badge>
                           </div>
                           <div className="space-y-2 text-sm">
                             <div className="flex items-center gap-2">
@@ -570,7 +570,7 @@ export default function ManualReturnManagement() {
                             </div>
                           </div>
                           <div className="mt-4">
-                            <Button size="sm" className="w-full bg-red-600 hover:bg-red-700">
+                            <Button size="sm" className="w-full bg-red-600 text-white hover:bg-red-700">
                               <ArrowUpDown className="w-4 h-4 mr-2" />
                               {t('initiateReturn')}
                             </Button>
@@ -857,7 +857,7 @@ export default function ManualReturnManagement() {
                       </div>
                       <div className="flex justify-end gap-3">
                         <Button variant="outline">{t('cancel')}</Button>
-                        <Button className="bg-red-600 hover:bg-red-700">{t('createReturn')}</Button>
+                        <Button className="bg-red-600 text-white hover:bg-red-700">{t('createReturn')}</Button>
                       </div>
                     </div>
                   </div>
@@ -923,7 +923,7 @@ export default function ManualReturnManagement() {
                       
                       <div className="flex justify-end gap-3">
                         <Button variant="outline">{t('cancel')}</Button>
-                        <Button className="bg-red-600 hover:bg-red-700">{t('createVendorReturnButton')}</Button>
+                        <Button className="bg-red-600 text-white hover:bg-red-700">{t('createVendorReturnButton')}</Button>
                       </div>
                     </div>
                   </div>

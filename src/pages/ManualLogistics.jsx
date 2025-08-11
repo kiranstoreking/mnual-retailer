@@ -972,7 +972,7 @@ export default function ManualLogistics() {
                                 </div>
                             </div>
                             <div className="text-right">
-                                <Button size="sm" className="bg-red-600 hover:bg-red-700 mb-1">{t('contactCustomer')}</Button>
+                                <Button size="sm" className="bg-red-600 text-white hover:bg-red-700 mb-1">{t('contactCustomer')}</Button>
                             </div>
                         </div>
                       </div>

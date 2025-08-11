@@ -914,7 +914,7 @@ export default function ManualInventory() {
                             </div>
                           </div>
                           <div className="flex gap-2">
-                            <Button size="sm" className="bg-red-600 hover:bg-red-700 h-8">
+                            <Button size="sm" className="bg-red-600 text-white hover:bg-red-700 h-8">
                               <Plus className="w-3 h-3 mr-1" />
                               {t('reorderNow')}
                             </Button>

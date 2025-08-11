@@ -537,7 +537,7 @@ export default function ManualPricing() {
                             <div className="text-xs text-red-600">• Lays Classic 50g - {t('margin')}: 11.8%</div>
                             <div className="text-xs text-red-600">• Maggi Noodles - {t('margin')}: 14.2%</div>
                           </div>
-                          <Button size="sm" className="mt-3 bg-red-600 hover:bg-red-700">{t('reviewProducts')}</Button>
+                          <Button size="sm" className="mt-3 bg-red-600 text-white hover:bg-red-700">{t('reviewProducts')}</Button>
                         </div>
                       </div>
                     </div>
