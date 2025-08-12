@@ -879,7 +879,7 @@ export default function ManualPayLater() {
                       </div>
                     </div>
                     <div className="mt-4"><label className="text-sm font-medium">{t('rejectionReason')}</label><Input placeholder="Optional: provide reason for rejection..."/></div>
-                    <div className="flex justify-end gap-2 mt-6"><Button variant="destructive">{t('reject')}</Button><Button className="bg-green-600 hover:bg-green-700">{t('approve')}</Button></div>
+                    <div className="flex justify-end gap-2 mt-6"><Button className="text-white" variant="destructive">{t('reject')}</Button><Button className="bg-green-600 hover:bg-green-700">{t('approve')}</Button></div>
                   </div>
                 </Screenshot>
               </Step>

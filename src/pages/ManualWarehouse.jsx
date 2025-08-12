@@ -27,6 +27,7 @@ const translations = {
     screenshot1H3: "Physical Warehouse Layout",
     screenshot1P: "Rack-Shelf-Bin hierarchy visualization",
     rackA: "RACK A",
+    rackB: "RACK B",
     shelf3: "Shelf 3",
     empty: "Empty",
     shelf2: "Shelf 2",
@@ -131,12 +132,17 @@ const translations = {
     bulkCreateLocations: "Bulk Create Locations",
     createMultipleBins: "Create multiple bin locations at once for new racks or shelves.",
     rackRange: "Rack Range",
+    from: "From",
     fromPlaceholder: "From (e.g., A)",
+    fromNumberPlaceholder: "From (e.g., 1)",
     to: "to",
     toPlaceholder: "To (e.g., C)",
+    toNumberPlaceholder: "To (e.g., 3)",
     shelfRange: "Shelf Range",
     binsPerShelf: "Bins per Shelf",
+    binsPerShelfPlaceholder: "e.g., 5",
     defaultCapacity: "Default Capacity",
+    defaultCapacityPlaceholder: "e.g., 100",
     preview: "Preview: Locations to Create",
     totalLocations: "Total: 45 locations",
     andMore: "... and 25 more",
@@ -185,6 +191,13 @@ const translations = {
     nextStepsTitle: "Warehouse Setup Complete!",
     nextStepsDescription: "Your warehouse is now organized and ready for efficient operations. Next, learn how to add products and create attractive deals for your customers.",
     nextStepsButton: "Continue to Product & Content Management",
+    organicRiceSection: "Organic Rice Section",
+    organicBasmatiRice: "Organic Basmati Rice 1kg",
+    sameProductCategory: "Same product category • 45 units available space",
+    similarProductsNearby: "Similar products nearby • 60 units available space",
+    emptyBinHigherShelf: "Empty bin • Higher shelf level",
+    fortyUnitsAvailable: "40 units available space",
+    eightyFiveUnitsAvailable: "85 units available space",
   },
   kn: {
     pageTitle: "ವೇರ್‌ಹೌಸ್ ನಿರ್ವಹಣೆ ಕೈಪಿಡಿ",
@@ -202,6 +215,7 @@ const translations = {
     screenshot1H3: "ಭೌತಿಕ ವೇರ್‌ಹೌಸ್ ವಿನ್ಯಾಸ",
     screenshot1P: "ರ್ಯಾಕ್-ಶೆಲ್ಫ್-ಬಿನ್ ಶ್ರೇಣಿಬದ್ಧ ದೃಶ್ಯೀಕರಣ",
     rackA: "ರ್ಯಾಕ್ A",
+    rackB: "ರ್ಯಾಕ್ B",
     shelf3: "ಶೆಲ್ಫ್ 3",
     empty: "ಖಾಲಿ",
     shelf2: "ಶೆಲ್ಫ್ 2",
@@ -306,12 +320,17 @@ const translations = {
     bulkCreateLocations: "ಬೃಹತ್ ಪ್ರಮಾಣದಲ್ಲಿ ಸ್ಥಳಗಳನ್ನು ರಚಿಸಿ",
     createMultipleBins: "ಹೊಸ ರ್ಯಾಕ್‌ಗಳು ಅಥವಾ ಶೆಲ್ಫ್‌ಗಳಿಗಾಗಿ ಏಕಕಾಲದಲ್ಲಿ ಅನೇಕ ಬಿನ್ ಸ್ಥಳಗಳನ್ನು ರಚಿಸಿ.",
     rackRange: "ರ್ಯಾಕ್ ವ್ಯಾಪ್ತಿ",
+    from: "ಇಂದ",
     fromPlaceholder: "ಇಂದ (ಉದಾ, A)",
+    fromNumberPlaceholder: "ಇಂದ (ಉದಾ, 1)",
     to: "ಗೆ",
     toPlaceholder: "ಗೆ (ಉದಾ, C)",
+    toNumberPlaceholder: "ಗೆ (ಉದಾ, 3)",
     shelfRange: "ಶೆಲ್ಫ್ ವ್ಯಾಪ್ತಿ",
     binsPerShelf: "ಪ್ರತಿ ಶೆಲ್ಫ್‌ಗೆ ಬಿನ್‌ಗಳು",
+    binsPerShelfPlaceholder: "ಉದಾ, 5",
     defaultCapacity: "ಡೀಫಾಲ್ಟ್ ಸಾಮರ್ಥ್ಯ",
+    defaultCapacityPlaceholder: "ಉದಾ, 100",
     preview: "ಪೂರ್ವವೀಕ್ಷಣೆ: ರಚಿಸಬೇಕಾದ ಸ್ಥಳಗಳು",
     totalLocations: "ಒಟ್ಟು: 45 ಸ್ಥಳಗಳು",
     andMore: "... ಮತ್ತು 25 ಹೆಚ್ಚು",
@@ -360,6 +379,13 @@ const translations = {
     nextStepsTitle: "ವೇರ್‌ಹೌಸ್ ಸೆಟಪ್ ಪೂರ್ಣಗೊಂಡಿದೆ!",
     nextStepsDescription: "ನಿಮ್ಮ ಗೋದಾಮು ಈಗ ಸಂಘಟಿತವಾಗಿದೆ ಮತ್ತು ದಕ್ಷ ಕಾರ್ಯಾಚರಣೆಗಳಿಗೆ ಸಿದ್ಧವಾಗಿದೆ. ಮುಂದೆ, ಉತ್ಪನ್ನಗಳನ್ನು ಸೇರಿಸುವುದು ಮತ್ತು ನಿಮ್ಮ ಗ್ರಾಹಕರಿಗೆ ಆಕರ್ಷಕ ಡೀಲ್‌ಗಳನ್ನು ರಚಿಸುವುದು ಹೇಗೆ ಎಂಬುದನ್ನು ತಿಳಿಯಿರಿ.",
     nextStepsButton: "ಉತ್ಪನ್ನ ಮತ್ತು ವಿಷಯ ನಿರ್ವಹಣೆಗೆ ಮುಂದುವರಿಯಿರಿ",
+    organicRiceSection: "ಸಾವಯವ ಅಕ್ಕಿ ವಿಭಾಗ",
+    organicBasmatiRice: "ಸಾವಯವ ಬಾಸ್ಮತಿ ಅಕ್ಕಿ 1kg",
+    sameProductCategory: "ಒಂದೇ ಉತ್ಪನ್ನ ವರ್ಗ • 45 ಘಟಕಗಳು ಲಭ್ಯವಿರುವ ಸ್ಥಳ",
+    similarProductsNearby: "ಹತ್ತಿರದ ಒಂದೇ ರೀತಿಯ ಉತ್ಪನ್ನಗಳು • 60 ಘಟಕಗಳು ಲಭ್ಯವಿರುವ ಸ್ಥಳ",
+    emptyBinHigherShelf: "ಖಾಲಿ ಬಿನ್ • ಹೆಚ್ಚಿನ ಶೆಲ್ಫ್ ಮಟ್ಟ",
+    fortyUnitsAvailable: "40 ಘಟಕಗಳು ಲಭ್ಯವಿರುವ ಸ್ಥಳ",
+    eightyFiveUnitsAvailable: "85 ಘಟಕಗಳು ಲಭ್ಯವಿರುವ ಸ್ಥಳ",
   },
   te: {
     pageTitle: "గిడ్డంగి నిర్వహణ మాన్యువల్",
@@ -377,6 +403,7 @@ const translations = {
     screenshot1H3: "భౌతిక గిడ్డంగి లేఅవుట్",
     screenshot1P: "ర్యాక్-షెల్ఫ్-బిన్ శ్రేణి దృశ్యమానం",
     rackA: "ర్యాక్ A",
+    rackB: "ర్యాక్ B",
     shelf3: "షెల్ఫ్ 3",
     empty: "ఖాళీ",
     shelf2: "షెల్ఫ్ 2",
@@ -481,12 +508,17 @@ const translations = {
     bulkCreateLocations: "బల్క్‌లో స్థానాలను సృష్టించండి",
     createMultipleBins: "కొత్త ర్యాక్‌లు లేదా షెల్ఫ్‌ల కోసం ఒకేసారి బహుళ బిన్ స్థానాలను సృష్టించండి.",
     rackRange: "ర్యాక్ పరిధి",
+    from: "నుండి",
     fromPlaceholder: "నుండి (ఉదా, A)",
+    fromNumberPlaceholder: "నుండి (ఉదా, 1)",
     to: "వరకు",
     toPlaceholder: "వరకు (ఉదా, C)",
+    toNumberPlaceholder: "వరకు (ఉదా, 3)",
     shelfRange: "షెల్ఫ్ పరిధి",
     binsPerShelf: "ప్రతి షెల్ఫ్‌కు బిన్‌లు",
+    binsPerShelfPlaceholder: "ఉదా, 5",
     defaultCapacity: "డిఫాల్ట్ సామర్థ్యం",
+    defaultCapacityPlaceholder: "ఉదా, 100",
     preview: "ప్రివ్యూ: సృష్టించాల్సిన స్థానాలు",
     totalLocations: "మొత్తం: 45 స్థానాలు",
     andMore: "... మరియు 25 మరిన్ని",
@@ -535,6 +567,11 @@ const translations = {
     nextStepsTitle: "గిడ్డంగి సెటప్ పూర్తయింది!",
     nextStepsDescription: "మీ గిడ్డంగి ఇప్పుడు వ్యవస్థీకృతమై, సమర్థవంతమైన కార్యకలాపాలకు సిద్ధంగా ఉంది. తరువాత, ఉత్పత్తులను ఎలా జోడించాలో మరియు మీ కస్టమర్‌ల కోసం ఆకర్షణీయమైన డీల్‌లను ఎలా సృష్టించాలో తెలుసుకోండి.",
     nextStepsButton: "ఉత్పత్తి మరియు కంటెంట్ నిర్వహణకు కొనసాగండి",
+    organicRiceSection: "ఆర్గానిక్ రైస్ విభాగం",
+    organicBasmatiRice: "ఆర్గానిక్ బాస్మతి రైస్ 1kg",
+    sameProductCategory: "ఒకే ఉత్పత్తి వర్గం • 45 యూనిట్లు అందుబాటులో ఉన్న స్థలం",
+    similarProductsNearby: "సమీపంలో ఒకే రకమైన ఉత్పత్తులు • 60 యూనిట్లు అందుబాటులో ఉన్న స్థలం",
+    emptyBinHigherShelf: "ఖాళీ బిన్ • ఎక్కువ షెల్ఫ్ స్థాయి",
   },
   ta: {
     pageTitle: "கிடங்கு மேலாண்மை கையேடு",
@@ -552,6 +589,7 @@ const translations = {
     screenshot1H3: "உடல் கிடங்கு அமைவு",
     screenshot1P: "ரேக்-ஷெல்ஃப்-பின் படிநிலை காட்சிப்படுத்தல்",
     rackA: "ரேக் A",
+    rackB: "ரேக் B",
     shelf3: "ஷெல்ஃப் 3",
     empty: "காலியானது",
     shelf2: "ஷெல்ஃப் 2",
@@ -656,12 +694,17 @@ const translations = {
     bulkCreateLocations: "மொத்தமாக இருப்பிடங்களை உருவாக்கு",
     createMultipleBins: "புதிய ரேக்குகள் அல்லது அலமாரிகளுக்காக ஒரே நேரத்தில் பல தொட்டி இருப்பிடங்களை உருவாக்கவும்.",
     rackRange: "ரேக் வரம்பு",
+    from: "இருந்து",
     fromPlaceholder: "இருந்து (எ.கா., A)",
+    fromNumberPlaceholder: "இருந்து (எ.கா., 1)",
     to: "வரை",
     toPlaceholder: "வரை (எ.கா., C)",
+    toNumberPlaceholder: "வரை (எ.கா., 3)",
     shelfRange: "ஷெல்ஃப் வரம்பு",
     binsPerShelf: "ஒரு ஷெல்ஃப்க்கு தொட்டிகள்",
+    binsPerShelfPlaceholder: "எ.கா., 5",
     defaultCapacity: "இயல்புநிலை கொள்ளளவு",
+    defaultCapacityPlaceholder: "எ.கா., 100",
     preview: "முன்னோட்டம்: உருவாக்க வேண்டிய இடங்கள்",
     totalLocations: "மொத்தம்: 45 இடங்கள்",
     andMore: "... மற்றும் 25 மேலும்",
@@ -707,9 +750,14 @@ const translations = {
     cancelMovement: "இயக்கத்தை ரத்து செய்",
     confirmMovement: "பங்கு இயக்கத்தை உறுதிப்படுத்து",
 
-    nextStepsTitle: "Warehouse Setup Complete!", // Using English for now as per instructions
-    nextStepsDescription: "Your warehouse is now organized and ready for efficient operations. Next, learn how to add products and create attractive deals for your customers.", // Using English for now
-    nextStepsButton: "Continue to Product & Content Management", // Using English for now
+    nextStepsTitle: "கிடங்கு அமைப்பு முடிந்தது!",
+    nextStepsDescription: "உங்கள் கிடங்கு இப்போது ஒழுங்கமைக்கப்பட்டுள்ளது மற்றும் திறமையான செயல்பாடுகளுக்கு தயாராக உள்ளது. அடுத்து, தயாரிப்புகளை எவ்வாறு சேர்ப்பது மற்றும் உங்கள் வாடிக்கையாளர்களுக்கு கவர்ச்சிகரமான ஒப்பந்தங்களை எவ்வாறு உருவாக்குவது என்பதைக் கற்றுக்கொள்ளுங்கள்.",
+    nextStepsButton: "தயாரிப்பு மற்றும் உள்ளடக்க நிர்வாகத்திற்கு தொடரவும்",
+    organicRiceSection: "கரிம அரிசி பிரிவு",
+    organicBasmatiRice: "கரிம பாஸ்மதி அரிசி 1kg",
+    sameProductCategory: "ஒரே தயாரிப்பு வகை • 45 அலகுகள் கிடைக்கும் இடம்",
+    similarProductsNearby: "அருகிலுள்ள ஒரே மாதிரியான தயாரிப்புகள் • 60 அலகுகள் கிடைக்கும் இடம்",
+    emptyBinHigherShelf: "காலியான தொட்டி • உயர்ந்த அலமாரி நிலை",
   },
   hi: {
     pageTitle: "वेयरहाउस प्रबंधन मैनुअल",
@@ -727,6 +775,7 @@ const translations = {
     screenshot1H3: "भौतिक वेयरहाउस लेआउट",
     screenshot1P: "रैक-शेल्फ-बिन पदानुक्रम विज़ुअलाइज़ेशन",
     rackA: "रैक A",
+    rackB: "रैक B",
     shelf3: "शेल्फ 3",
     empty: "खाली",
     shelf2: "शेल्फ 2",
@@ -831,12 +880,17 @@ const translations = {
     bulkCreateLocations: "थोक में स्थान बनाएं",
     createMultipleBins: "नए रैक या अलमारियों के लिए एक बार में कई बिन स्थान बनाएं।",
     rackRange: "रैक रेंज",
+    from: "से",
     fromPlaceholder: "से (उदा., A)",
+    fromNumberPlaceholder: "से (उदा., 1)",
     to: "तक",
     toPlaceholder: "तक (उदा., C)",
+    toNumberPlaceholder: "तक (उदा., 3)",
     shelfRange: "शेल्फ रेंज",
     binsPerShelf: "प्रति शेल्फ बिन",
+    binsPerShelfPlaceholder: "उदा., 5",
     defaultCapacity: "डिफ़ॉल्ट क्षमता",
+    defaultCapacityPlaceholder: "उदा., 100",
     preview: "पूर्वावलोकन: बनाने के लिए स्थान",
     totalLocations: "कुल: 45 स्थान",
     andMore: "... और 25 और",
@@ -882,9 +936,14 @@ const translations = {
     cancelMovement: "आवाजाही रद्द करें",
     confirmMovement: "स्टॉक आवाजाही की पुष्टि करें",
 
-    nextStepsTitle: "Warehouse Setup Complete!", // Using English for now
-    nextStepsDescription: "Your warehouse is now organized and ready for efficient operations. Next, learn how to add products and create attractive deals for your customers.", // Using English for now
-    nextStepsButton: "Continue to Product & Content Management", // Using English for now
+    nextStepsTitle: "गोदाम सेटअप पूर्ण!",
+    nextStepsDescription: "आपका गोदाम अब व्यवस्थित है और कुशल संचालन के लिए तैयार है। अगला, अपने ग्राहकों के लिए उत्पाद जोड़ने और आकर्षक डील बनाने का तरीका सीखें।",
+    nextStepsButton: "उत्पाद और सामग्री प्रबंधन पर जारी रखें",
+    organicRiceSection: "जैविक चावल खंड",
+    organicBasmatiRice: "जैविक बासमती चावल 1kg",
+    sameProductCategory: "समान उत्पाद श्रेणी • 45 इकाइयां उपलब्ध स्थान",
+    similarProductsNearby: "आस-पास समान उत्पाद • 60 इकाइयां उपलब्ध स्थान",
+    emptyBinHigherShelf: "खाली बिन • उच्च शेल्फ स्तर",
   },
   ml: {
     pageTitle: "വെയർഹൗസ് മാനേജ്മെന്റ് മാനുവൽ",
@@ -902,6 +961,7 @@ const translations = {
     screenshot1H3: "ഫിസിക്കൽ വെയർഹൗസ് ലേഔട്ട്",
     screenshot1P: "റാക്ക്-ഷെൽഫ്-ബിൻ ഹൈറാർക്കി വിഷ്വലൈസേഷൻ",
     rackA: "റാക്ക് A",
+    rackB: "റാക്ക് B",
     shelf3: "ഷെൽഫ് 3",
     empty: "ഒഴിഞ്ഞത്",
     shelf2: "ഷെൽഫ് 2",
@@ -1006,12 +1066,17 @@ const translations = {
     bulkCreateLocations: "ബൾക്ക് ആയി ലൊക്കേഷനുകൾ സൃഷ്ടിക്കുക",
     createMultipleBins: "പുതിയ റാക്കുകൾക്കോ ഷെൽഫുകൾക്കോ വേണ്ടി ഒരേസമയം ഒന്നിലധികം ബിൻ ലൊക്കേഷനുകൾ സൃഷ്ടിക്കുക.",
     rackRange: "റാക്ക് ശ്രേണി",
+    from: "മുതൽ",
     fromPlaceholder: "മുതൽ (ഉദാ, A)",
+    fromNumberPlaceholder: "മുതൽ (ഉദാ, 1)",
     to: "വരെ",
     toPlaceholder: "വരെ (ഉദാ, C)",
+    toNumberPlaceholder: "വരെ (ഉദാ, 3)",
     shelfRange: "ഷെൽഫ് ശ്രേണി",
     binsPerShelf: "ഓരോ ഷെൽഫിലും ബിന്നുകൾ",
+    binsPerShelfPlaceholder: "ഉദാ, 5",
     defaultCapacity: "സ്ഥിരസ്ഥിതി ശേഷി",
+    defaultCapacityPlaceholder: "ഉദാ, 100",
     preview: "പ്രിവ്യൂ: സൃഷ്ടിക്കേണ്ട ലൊക്കേഷനുകൾ",
     totalLocations: "മൊത്തം: 45 ലൊക്കേഷനുകൾ",
     andMore: "... കൂടാതെ 25 എണ്ണം കൂടി",
@@ -1057,9 +1122,14 @@ const translations = {
     cancelMovement: "ചലനം റദ്ദാക്കുക",
     confirmMovement: "സ്റ്റോക്ക് ചലനം സ്ഥിരീകരിക്കുക",
 
-    nextStepsTitle: "Warehouse Setup Complete!", // Using English for now
-    nextStepsDescription: "Your warehouse is now organized and ready for efficient operations. Next, learn how to add products and create attractive deals for your customers.", // Using English for now
-    nextStepsButton: "Continue to Product & Content Management", // Using English for now
+    nextStepsTitle: "വെയർഹൗസ് സെറ്റപ്പ് പൂർത്തിയായി!",
+    nextStepsDescription: "നിങ്ങളുടെ വെയർഹൗസ് ഇപ്പോൾ ഓർഗനൈസ് ചെയ്തിരിക്കുന്നു, കാര്യക്ഷമമായ പ്രവർത്തനങ്ങൾക്ക് തയ്യാറാണ്. അടുത്തതായി, ഉത്പന്നങ്ങൾ എങ്ങനെ ചേർക്കാം, നിങ്ങളുടെ ഉപഭോക്താക്കൾക്ക് ആകർഷകമായ ഡീലുകൾ എങ്ങനെ സൃഷ്ടിക്കാം എന്നത് പഠിക്കുക.",
+    nextStepsButton: "ഉത്പന്ന & ഉള്ളടക്ക നിര್ವഹണത്തിലേക്ക് തുടരുക",
+    organicRiceSection: "ഓർഗാനിക് അരി വിഭാഗം",
+    organicBasmatiRice: "ഓർഗാനിക് ബാസ്മതി അരി 1kg",
+    sameProductCategory: "ഒരേ ഉൽപ്പന്ന വിഭാഗം • 45 യൂണിറ്റുകൾ ലഭ്യമായ സ്ഥലം",
+    similarProductsNearby: "അടുത്തുള്ള സമാന ഉൽപ്പന്നങ്ങൾ • 60 യൂണിറ്റുകൾ ലഭ്യമായ സ്ഥലം",
+    emptyBinHigherShelf: "ഒഴിഞ്ഞ ബിൻ • ഉയർന്ന ഷെൽഫ് ലെവൽ",
   }
 };
 
@@ -1286,7 +1356,7 @@ export default function ManualWarehouse() {
 
                         {/* Rack B */}
                         <div className="border border-slate-200 rounded-lg p-4 bg-white">
-                          <h4 className="font-semibold text-center mb-4 text-slate-700">Rack B</h4>
+                          <h4 className="font-semibold text-center mb-4 text-slate-700">{t('rackB')}</h4>
                           <div className="space-y-3">
                             <div className="text-xs text-slate-500 text-center">{t('shelf1')}</div>
                             <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
@@ -1534,18 +1604,18 @@ export default function ManualWarehouse() {
                           <div>
                             <label className="block text-sm font-medium text-slate-700 mb-2">{t('shelfRange')}</label>
                             <div className="flex flex-col sm:flex-row items-stretch gap-2">
-                              <Input type="number" placeholder={`${t('from')} (e.g., 1)`} className="flex-1 min-w-0" />
+                              <Input type="number" placeholder={t('fromNumberPlaceholder')} className="flex-1 min-w-0" />
                               <span className="text-slate-500">{t('to')}</span>
-                              <Input type="number" placeholder={`${t('to')} (e.g., 3)`} className="flex-1 min-w-0" />
+                              <Input type="number" placeholder={t('toNumberPlaceholder')} className="flex-1 min-w-0" />
                             </div>
                           </div>
                           <div>
                             <label className="block text-sm font-medium text-slate-700 mb-2">{t('binsPerShelf')}</label>
-                            <Input type="number" placeholder="e.g., 5" className="w-full" />
+                            <Input type="number" placeholder={t('binsPerShelfPlaceholder')} className="w-full" />
                           </div>
                           <div>
                             <label className="block text-sm font-medium text-slate-700 mb-2">{t('defaultCapacity')}</label>
-                            <Input type="number" placeholder="e.g., 100" className="w-full" />
+                            <Input type="number" placeholder={t('defaultCapacityPlaceholder')} className="w-full" />
                           </div>
                         </div>
                         
@@ -1612,7 +1682,7 @@ export default function ManualWarehouse() {
                             </div>
                             <div>
                               <div className="font-medium text-green-800">A-2-03{t('recommended')}</div>
-                              <div className="text-sm text-green-600">Same product category • 45 units available space</div>
+                              <div className="text-sm text-green-600">{t('sameProductCategory')}</div>
                             </div>
                           </div>
                           <Badge className="bg-green-100 text-green-800">{t('bestMatch')}</Badge>
@@ -1625,7 +1695,7 @@ export default function ManualWarehouse() {
                             </div>
                             <div>
                               <div className="font-medium text-blue-800">B-1-04{t('alternative')}</div>
-                              <div className="text-sm text-blue-600">Similar products nearby • 60 units available space</div>
+                              <div className="text-sm text-blue-600">{t('similarProductsNearby')}</div>
                             </div>
                           </div>
                           <Badge className="bg-blue-100 text-blue-800">{t('goodOption')}</Badge>
@@ -1638,7 +1708,7 @@ export default function ManualWarehouse() {
                             </div>
                             <div>
                               <div className="font-medium text-amber-800">C-3-01{t('availableSugg')}</div>
-                              <div className="text-sm text-amber-600">Empty bin • Higher shelf level</div>
+                              <div className="text-sm text-amber-600">{t('emptyBinHigherShelf')}</div>
                             </div>
                           </div>
                           <Badge className="bg-amber-100 text-amber-800">{t('lastResort')}</Badge>
@@ -1672,13 +1742,13 @@ export default function ManualWarehouse() {
                               </div>
                               <div>
                                 <div className="font-medium">A-2-03</div>
-                                <div className="text-sm text-slate-500">Organic Rice Section</div>
+                                <div className="text-sm text-slate-500">{t('organicRiceSection')}</div>
                               </div>
                             </div>
                             <div className="space-y-2">
                               <div className="flex flex-wrap items-center justify-between gap-2 text-sm">
                                 <span className="text-slate-600">{t('product')}</span>
-                                <span className="font-medium break-words">Organic Basmati Rice 1kg</span>
+                                <span className="font-medium break-words">{t('organicBasmatiRice')}</span>
                               </div>
                               <div className="flex justify-between text-sm">
                                 <span className="text-slate-600">{t('currentStock')}</span>
@@ -1727,7 +1797,7 @@ export default function ManualWarehouse() {
                       <div className="border border-blue-200 bg-blue-50 rounded-lg p-4">
                         <h5 className="font-medium text-blue-800 mb-2">{t('movementSummary')}</h5>
                         <div className="text-sm text-blue-700 space-y-1">
-                          <div className="break-words">{t('moving')} 30 units of Organic Basmati Rice 1kg</div>
+                          <div className="break-words">{t('moving')} 30 units of {t('organicBasmatiRice')}</div>
                           <div>{t('fromTo')}</div>
                           <div>{t('reason')}</div>
                         </div>

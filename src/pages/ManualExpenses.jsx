@@ -627,7 +627,7 @@ export default function ManualExpenses() {
                         <h3 className="text-lg font-bold">{t('approvalModal')}</h3>
                         <p className="text-sm text-slate-500 mt-1">{t('reviewExpense')} <strong>{t('travel')}</strong></p>
                         <Card className="my-4"><CardContent className="p-3"><p className="text-sm"><strong>{t('amount')}:</strong> ₹12,000</p><p className="text-sm"><strong>{t('submittedBy')}:</strong> sales.manager@example.com</p><p className="text-sm"><strong>{t('descriptionField')}:</strong> Trip to attend conference in Delhi.</p></CardContent></Card>
-                        <div className="flex justify-end gap-2"><Button variant="destructive">{t('reject')}</Button><Button className="bg-green-600 hover:bg-green-700">{t('approve')}</Button></div>
+                        <div className="flex justify-end gap-2"><Button className="text-white" variant="destructive">{t('reject')}</Button><Button className="bg-green-600 hover:bg-green-700">{t('approve')}</Button></div>
                      </div>
                 </Screenshot>
               </Step>
